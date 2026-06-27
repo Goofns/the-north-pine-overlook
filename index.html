@@ -3,291 +3,263 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The North Pine Overlook · A Mountain Home in Bailey, Colorado</title>
-<meta name="description" content="A home in the pines above Platte Canyon — surrounded by Pike National Forest, an hour from Denver. The North Pine Overlook, Bailey, Colorado." />
+<!-- EDIT: Browser tab title -->
+<title>The North Pine Overlook · A mountain home in Bailey, Colorado</title>
+<!-- EDIT: search + link-preview description -->
+<meta name="description" content="A quiet mountain home in the pines above Bailey, Colorado. Sleeps 6. Dark skies, a canyon view, national forest at the door, and an easy hour from Denver." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --spruce:#16231C;      /* deepest forest — page base */
-    --pine:#1E2F26;        /* lifted sections */
-    --pine-card:#26392E;   /* cards */
-    --moss:#3C5A47;        /* hairlines / borders */
-    --birch:#ECE7DA;       /* primary text — birch paper */
-    --sage:#9CAE96;        /* secondary text / labels — lichen */
-    --lantern:#CBA24E;     /* accent — a lit cabin window at dusk */
-    --lantern-soft:rgba(203,162,78,.12);
-    --maxw:1140px;
+    --night:#0C1712;
+    --spruce:#15221B;
+    --pine:#1C2C24;
+    --pine-card:#243729;
+    --moss:#3A5645;
+    --birch:#EFEADD;
+    --sage:#9FB199;
+    --lantern:#E0B45F;
+    --ember:#CC7E47;
+    --maxw:1160px;
     --display:"Fraunces",Georgia,serif;
     --body:"Karla","Helvetica Neue",Arial,sans-serif;
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--spruce);
-    color:var(--birch);
-    font-family:var(--body);
-    font-weight:400;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
+  body{background:var(--spruce);color:var(--birch);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
 
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-  .section{padding:120px 0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px}
+  .section{padding:124px 0}
 
-  /* eyebrow label */
-  .eyebrow{
-    font-family:var(--body);
-    font-size:.72rem;
-    font-weight:600;
-    letter-spacing:.28em;
-    text-transform:uppercase;
-    color:var(--sage);
-    display:inline-flex;
-    align-items:center;
-    gap:.7em;
-  }
-  .eyebrow::before{
-    content:"";
-    width:26px;height:1px;
-    background:var(--lantern);
-    display:inline-block;
-  }
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--lantern);display:inline-flex;align-items:center;gap:.85em}
+  .eyebrow::before{content:"";width:30px;height:1px;background:var(--lantern);opacity:.7;display:inline-block}
 
-  h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+  h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.04;letter-spacing:-.015em}
+  .h-lg{font-size:clamp(2.1rem,4.4vw,3.4rem);max-width:16ch}
+  .lead-in{margin-top:.5em}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    min-height:100svh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    overflow:hidden;
-    isolation:isolate;
-  }
-  /* dusk glow low on the horizon */
-  .hero::before{
-    content:"";
-    position:absolute;
-    left:50%;bottom:-10%;
-    width:120%;height:70%;
-    transform:translateX(-50%);
-    background:radial-gradient(ellipse at center bottom,
-      rgba(203,162,78,.22) 0%,
-      rgba(203,162,78,.06) 35%,
-      transparent 65%);
-    z-index:-2;
-    pointer-events:none;
-  }
-  .hero-inner{position:relative;z-index:2}
+  /* scroll progress */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--lantern);z-index:200;transition:width .08s linear}
 
-  .hero h1{
-    font-size:clamp(3.2rem,11vw,8.2rem);
-    font-weight:500;
-    letter-spacing:-.025em;
-    margin:.18em 0 .32em;
-    max-width:14ch;
-  }
+  /* ---------------- NAV ---------------- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,46px);transition:background .4s ease,padding .4s ease,border-color .4s ease;border-bottom:1px solid transparent}
+  .nav.scrolled{background:rgba(15,24,19,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px clamp(20px,5vw,46px);border-bottom:1px solid var(--moss)}
+  .nav .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-size:1.06rem;color:var(--birch)}
+  .nav .brand b{color:var(--lantern);font-weight:500;font-style:italic}
+  .mark-svg{width:26px;height:26px;flex:none}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:.84rem;letter-spacing:.04em;color:var(--sage);transition:color .25s ease}
+  .nav-links a:hover{color:var(--birch)}
+  .pill{font-family:var(--body);font-weight:600;font-size:.82rem;letter-spacing:.03em;color:#1d1606;background:var(--lantern);padding:10px 20px;border-radius:100px;transition:transform .25s ease,background .25s ease}
+  .pill:hover{transform:translateY(-1px);background:#ecc270}
+
+  /* ---------------- HERO ---------------- */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;isolation:isolate;background:linear-gradient(to bottom,var(--night) 0%,#11201A 42%,#14221B 68%,var(--spruce) 100%)}
+  .hero::before{content:"";position:absolute;left:50%;bottom:-6%;width:130%;height:62%;transform:translateX(-50%);z-index:1;pointer-events:none;background:radial-gradient(ellipse at center bottom,rgba(224,180,95,.20) 0%,rgba(204,126,71,.08) 34%,transparent 64%)}
+  .stars{position:absolute;inset:0;z-index:2;pointer-events:none;will-change:transform}
+  .star{position:absolute;background:#fff;border-radius:50%;box-shadow:0 0 4px rgba(255,255,255,.55)}
+  .star.tw{animation:twinkle 3.6s ease-in-out infinite}
+  @keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
+  .moon{position:absolute;top:13%;right:13%;width:62px;height:62px;border-radius:50%;z-index:3;background:radial-gradient(circle at 38% 36%,#f7f2e6 0%,#ddd6c2 68%,#cbc3ad 100%);box-shadow:0 0 60px 16px rgba(247,242,230,.16),0 0 150px 56px rgba(224,180,95,.09);will-change:transform}
+  .ridges{position:absolute;left:0;right:0;bottom:0;width:100%;height:min(50vh,440px);z-index:4;pointer-events:none}
+  .ridges svg{width:100%;height:100%;display:block}
+  .cabin{position:absolute;left:50%;bottom:15%;transform:translateX(-50%);z-index:5;pointer-events:none}
+  .cabin .halo{position:absolute;left:50%;top:50%;width:190px;height:190px;transform:translate(-50%,-50%);border-radius:50%;filter:blur(3px);background:radial-gradient(circle,rgba(224,180,95,.5) 0%,rgba(204,126,71,.18) 38%,transparent 70%)}
+  .cabin .win{position:relative;width:15px;height:19px;border-radius:1px;background:linear-gradient(#ffe7ab,#eab35c);box-shadow:0 0 12px 3px rgba(255,212,124,.85);animation:flicker 6s ease-in-out infinite}
+  @keyframes flicker{0%,100%{opacity:1}45%{opacity:.82}70%{opacity:.94}}
+  .mist{position:absolute;left:-12%;right:-12%;bottom:13%;height:140px;z-index:5;pointer-events:none}
+  .mist span{position:absolute;height:64px;border-radius:50%;filter:blur(9px);background:linear-gradient(90deg,transparent,rgba(196,210,200,.12),transparent)}
+  .mist .m1{top:0;width:58%;left:0;animation:drift 30s linear infinite}
+  .mist .m2{top:42px;width:48%;left:0;opacity:.7;animation:drift 44s linear infinite reverse}
+  @keyframes drift{from{transform:translateX(-35%)}to{transform:translateX(135%)}}
+  .hero-inner{position:relative;z-index:10}
+  .hero h1{font-size:clamp(3.3rem,11vw,8rem);font-weight:500;letter-spacing:-.028em;margin:.2em 0 .34em;max-width:13ch}
   .hero h1 em{font-style:italic;font-weight:400;color:var(--lantern)}
-  .hero .lede{
-    font-size:clamp(1.05rem,2vw,1.3rem);
-    color:var(--sage);
-    max-width:46ch;
-    font-weight:300;
-  }
-
-  .cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:42px;align-items:center}
-  .btn{
-    font-family:var(--body);
-    font-weight:600;
-    font-size:.9rem;
-    letter-spacing:.02em;
-    padding:15px 30px;
-    border-radius:2px;
-    border:1px solid transparent;
-    transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease;
-    cursor:pointer;
-  }
-  .btn-primary{background:var(--lantern);color:#1c1505}
-  .btn-primary:hover{transform:translateY(-2px);background:#dcb463}
+  .hero .lede{font-size:clamp(1.08rem,2vw,1.32rem);color:#cdd6c8;max-width:42ch;font-weight:300}
+  .cta-row{display:flex;flex-wrap:wrap;gap:15px;margin-top:42px}
+  .btn{font-family:var(--body);font-weight:600;font-size:.9rem;letter-spacing:.02em;padding:15px 32px;border-radius:100px;border:1px solid transparent;cursor:pointer;transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease}
+  .btn-primary{background:var(--lantern);color:#1d1606}
+  .btn-primary:hover{transform:translateY(-2px);background:#ecc270}
   .btn-ghost{border-color:var(--moss);color:var(--birch)}
   .btn-ghost:hover{border-color:var(--lantern);color:var(--lantern)}
-
-  /* layered ridgeline — the signature element */
-  .ridge{
-    position:absolute;
-    left:0;right:0;bottom:0;
-    width:100%;
-    height:min(46vh,420px);
-    z-index:-1;
-    pointer-events:none;
-  }
-  .ridge svg{width:100%;height:100%;display:block}
-
-  .scrollcue{
-    position:absolute;
-    left:50%;bottom:30px;
-    transform:translateX(-50%);
-    z-index:3;
-    font-size:.66rem;
-    letter-spacing:.26em;
-    text-transform:uppercase;
-    color:var(--sage);
-    display:flex;flex-direction:column;align-items:center;gap:10px;
-    animation:bob 2.6s ease-in-out infinite;
-  }
-  .scrollcue span{width:1px;height:34px;background:linear-gradient(var(--lantern),transparent)}
+  .scrollcue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:10;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);display:flex;flex-direction:column;align-items:center;gap:9px;animation:bob 2.6s ease-in-out infinite}
+  .scrollcue span{width:1px;height:32px;background:linear-gradient(var(--lantern),transparent)}
   @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
 
-  /* ---------- ABOUT ---------- */
+  /* ---------------- ABOUT ---------------- */
   .about{background:var(--pine)}
-  .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center}
-  .about h2{font-size:clamp(2rem,4vw,3.1rem);margin:.4em 0 0;max-width:12ch}
-  .about p{margin-top:1.4em;color:var(--sage);max-width:54ch}
-  .about p + p{margin-top:1.1em}
+  .about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:78px;align-items:center}
+  .about p{margin-top:1.5em;color:var(--sage);max-width:52ch;font-size:1.02rem}
+  .about p:first-of-type{margin-top:1.4em}
+  .stat-stack{border-top:1px solid var(--moss)}
+  .stat{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:22px 2px;border-bottom:1px solid var(--moss)}
+  .stat dt{color:var(--sage);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+  .stat dd{font-family:var(--display);font-size:clamp(1.4rem,2.4vw,2rem);color:var(--birch)}
+  .stat dd b{color:var(--lantern);font-weight:500}
 
-  .stat-stack{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--moss)}
-  .stat{
-    display:flex;align-items:baseline;justify-content:space-between;gap:20px;
-    padding:22px 4px;
-    border-bottom:1px solid var(--moss);
-  }
-  .stat dt{font-family:var(--body);color:var(--sage);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase}
-  .stat dd{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.9rem);color:var(--birch)}
+  /* ---------------- THE HOUSE (amenities) ---------------- */
+  .house{background:var(--spruce)}
+  .amen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 30px;margin-top:60px}
+  .amen{display:flex;flex-direction:column;gap:12px}
+  .amen .ico{width:30px;height:30px;color:var(--lantern)}
+  .amen b{font-family:var(--display);font-weight:500;font-size:1.18rem;color:var(--birch)}
+  .amen span{color:var(--sage);font-size:.92rem}
 
-  /* ---------- HIGHLIGHTS ---------- */
-  .highlights h2{font-size:clamp(2rem,4vw,3.1rem);max-width:16ch;margin-top:.4em}
-  .feat-grid{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
-    background:var(--moss);
-    border:1px solid var(--moss);
-    margin-top:60px;
-  }
-  .feat{
-    background:var(--pine-card);
-    padding:46px 42px 52px;
-    transition:background .3s ease;
-  }
-  .feat:hover{background:#2c4236}
-  .feat .ico{width:34px;height:34px;color:var(--lantern);margin-bottom:26px}
-  .feat h3{font-size:1.5rem;margin-bottom:.5em}
-  .feat p{color:var(--sage);font-size:.97rem}
+  /* ---------------- AREA (features) ---------------- */
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--moss);border:1px solid var(--moss);margin-top:62px}
+  .feat{background:var(--pine-card);padding:48px 44px 54px;position:relative;transition:background .3s ease}
+  .feat:hover{background:#2a4030}
+  .feat .ico{width:32px;height:32px;color:var(--lantern);margin-bottom:26px}
+  .feat h3{font-size:1.55rem;margin-bottom:.5em}
+  .feat p{color:var(--sage);font-size:.98rem;max-width:40ch}
 
-  /* ---------- GALLERY ---------- */
-  .gallery{background:var(--pine)}
-  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px}
+  /* ---------------- SEASONS ---------------- */
+  .seasons{background:var(--pine)}
+  .season-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:60px}
+  .season{padding-top:22px;border-top:1px solid var(--moss)}
+  .season .lab{font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--lantern)}
+  .season h3{font-family:var(--body);font-weight:400;font-size:1rem;color:var(--sage);line-height:1.55;margin-top:14px;letter-spacing:0}
+
+  /* ---------------- NEARBY ---------------- */
+  .nearby{background:var(--spruce)}
+  .near-list{margin-top:56px;border-top:1px solid var(--moss)}
+  .near{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:26px 4px;border-bottom:1px solid var(--moss)}
+  .near .n-num{font-family:var(--display);color:var(--moss);font-size:1.1rem;width:2ch}
+  .near .n-name{font-family:var(--display);font-size:clamp(1.2rem,2.2vw,1.55rem);color:var(--birch)}
+  .near .n-desc{color:var(--sage);font-size:.95rem;margin-top:4px;max-width:48ch}
+  .near .n-dist{color:var(--lantern);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;font-weight:600;text-align:right}
+
+  /* ---------------- LOCATION / MAP ---------------- */
+  .location{background:var(--pine)}
+  .loc-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+  .loc p{color:var(--sage);margin-top:1.3em;max-width:44ch}
+  .map-frame{border:1px solid var(--moss);border-radius:10px;overflow:hidden;background:#1a2a22;min-height:360px;position:relative}
+  .map-frame iframe{width:100%;height:420px;border:0;display:block;filter:grayscale(.25) brightness(.92)}
+  .map-note{font-size:.78rem;color:var(--sage);margin-top:14px;letter-spacing:.02em}
+
+  /* ---------------- GALLERY ---------------- */
+  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:58px}
   .gal-grid figure:first-child{grid-column:span 2;grid-row:span 2}
-  .ph{
-    position:relative;
-    aspect-ratio:1/1;
-    background:
-      linear-gradient(135deg,#223429 0%,#2c4233 100%);
-    border:1px solid var(--moss);
-    display:flex;align-items:center;justify-content:center;
-    overflow:hidden;
-  }
-  .gal-grid figure:first-child .ph{aspect-ratio:auto;height:100%;min-height:280px}
-  .ph::after{
-    content:"Replace with your photo";
-    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--sage);opacity:.7;
-  }
-  /* To use a real image, replace the <div class="ph"></div> with:
-     <img src="photo.jpg" alt="describe the view" style="width:100%;height:100%;object-fit:cover"> */
+  .ph{position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid var(--moss);background:linear-gradient(160deg,#1f3128 0%,#2b4133 60%,#1c2c24 100%)}
+  .gal-grid figure:first-child .ph{aspect-ratio:auto;height:100%;min-height:300px}
+  .ph::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,18,14,.6),transparent 55%);z-index:1}
+  .ph .cap{position:absolute;left:20px;bottom:18px;z-index:2}
+  .ph .cap b{display:block;font-family:var(--display);font-weight:500;font-size:1.05rem;color:var(--birch)}
+  .ph .cap small{display:block;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);margin-top:5px;opacity:.85}
 
-  /* ---------- INQUIRE / CONTACT ---------- */
-  .inquire{position:relative;text-align:center;overflow:hidden}
-  .inquire::before{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(ellipse at center 120%,rgba(203,162,78,.16),transparent 60%);
-    z-index:0;
-  }
-  .inquire .wrap{position:relative;z-index:1}
-  .inquire h2{font-size:clamp(2.4rem,6vw,4.6rem);margin:.35em auto .5em;max-width:18ch}
-  .inquire p{color:var(--sage);max-width:50ch;margin:0 auto 40px}
-  .mailto{
-    font-family:var(--display);
-    font-size:clamp(1.2rem,3vw,1.9rem);
-    color:var(--lantern);
-    border-bottom:1px solid var(--moss);
-    padding-bottom:4px;
-    transition:border-color .25s ease;
-  }
-  .mailto:hover{border-color:var(--lantern)}
+  /* ---------------- INQUIRE (form) ---------------- */
+  .inquire{position:relative;overflow:hidden;background:var(--spruce)}
+  .inquire::before{content:"";position:absolute;left:50%;top:-20%;width:90%;height:140%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(224,180,95,.13),rgba(204,126,71,.04) 40%,transparent 62%);z-index:0}
+  .inq-grid{position:relative;z-index:1;display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+  .inquire h2{font-size:clamp(2.2rem,4.6vw,3.4rem);max-width:13ch;margin-top:.4em}
+  .inquire .sub{color:var(--sage);margin-top:1.2em;max-width:38ch}
+  .inquire .direct{margin-top:1.8em;font-size:.95rem;color:var(--sage)}
+  .inquire .direct a{color:var(--lantern);border-bottom:1px solid var(--moss)}
+  .form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field.full{grid-column:1 / -1}
+  .field label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+  .field input,.field textarea{width:100%;background:var(--pine-card);border:1px solid var(--moss);color:var(--birch);padding:13px 15px;border-radius:7px;font-family:var(--body);font-size:.96rem;transition:border-color .2s ease}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--lantern)}
+  .field textarea{resize:vertical;min-height:110px}
+  .field input::placeholder,.field textarea::placeholder{color:#6f8378}
+  .form .submit{grid-column:1 / -1;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
+  .form .submit .btn-primary{cursor:pointer}
+  .form-note{font-size:.82rem;color:var(--sage)}
 
-  /* ---------- FOOTER ---------- */
-  footer{border-top:1px solid var(--moss);padding:46px 0;background:var(--spruce)}
-  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center}
-  .foot .mark{font-family:var(--display);font-size:1.15rem;letter-spacing:.01em}
-  .foot small{color:var(--sage);font-size:.82rem;letter-spacing:.04em}
+  /* ---------------- FOOTER ---------------- */
+  footer{border-top:1px solid var(--moss);padding:54px 0 40px;background:var(--spruce)}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:center;padding-bottom:30px;border-bottom:1px solid var(--moss)}
+  .foot-brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:1.3rem}
+  .foot-brand b{color:var(--lantern);font-weight:500;font-style:italic}
+  .foot-nav{display:flex;flex-wrap:wrap;gap:26px}
+  .foot-nav a{color:var(--sage);font-size:.88rem;transition:color .2s ease}
+  .foot-nav a:hover{color:var(--birch)}
+  .foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:26px}
+  .foot-bottom small{color:var(--sage);font-size:.82rem;letter-spacing:.03em}
 
-  /* ---------- reveal motion ---------- */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+  /* ---------------- motion / a11y ---------------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
   .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+  a:focus-visible,.btn:focus-visible,.pill:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--lantern);outline-offset:3px;border-radius:4px}
 
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none!important}
-    html{scroll-behavior:auto}
-    .reveal{opacity:1;transform:none;transition:none}
+  /* ---------------- responsive ---------------- */
+  @media (max-width:980px){
+    .amen-grid{grid-template-columns:repeat(3,1fr)}
   }
-
-  /* focus visibility */
-  a:focus-visible,.btn:focus-visible{outline:2px solid var(--lantern);outline-offset:4px;border-radius:2px}
-
-  /* ---------- responsive ---------- */
-  @media (max-width:860px){
-    .section{padding:84px 0}
-    .about-grid{grid-template-columns:1fr;gap:44px}
+  @media (max-width:880px){
+    .section{padding:88px 0}
+    .nav-links{display:none}
+    .about-grid,.loc-grid,.inq-grid{grid-template-columns:1fr;gap:46px}
     .feat-grid{grid-template-columns:1fr}
-    .gal-grid{grid-template-columns:1fr 1fr}
-    .gal-grid figure:first-child{grid-column:span 2}
+    .season-grid{grid-template-columns:1fr 1fr;gap:26px}
+    .amen-grid{grid-template-columns:1fr 1fr;gap:30px}
+    .near{grid-template-columns:auto 1fr;gap:6px 20px}
+    .near .n-dist{grid-column:2;justify-self:start;margin-top:6px}
   }
   @media (max-width:540px){
     .wrap{padding:0 22px}
     .cta-row .btn{flex:1 1 auto;text-align:center}
-    .gal-grid{grid-template-columns:1fr}
-    .gal-grid figure:first-child{grid-column:span 1}
+    .season-grid,.form{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr 1fr;gap:10px}
+    .gal-grid figure:first-child{grid-column:span 2}
+    .moon{width:46px;height:46px;top:11%;right:10%}
   }
 </style>
 </head>
 <body>
 
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a class="brand" href="#top">
+    <svg class="mark-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" stroke="#E0B45F" stroke-width="1.4"/>
+      <path d="M20 9l5 8h-3l4 6h-4l3 5H15l3-5h-4l4-6h-3z" fill="#E0B45F"/>
+      <path d="M9 30h22" stroke="#E0B45F" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+    <span>The North Pine <b>Overlook</b></span>
+  </a>
+  <div class="nav-links">
+    <a href="#house">The house</a>
+    <a href="#area">The area</a>
+    <a href="#nearby">Nearby</a>
+    <a href="#gallery">Gallery</a>
+  </div>
+  <a class="pill" href="#inquire">Check dates</a>
+</nav>
+
 <!-- ============ HERO ============ -->
-<header class="hero">
-  <div class="ridge" aria-hidden="true">
-    <svg viewBox="0 0 1440 420" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- far ridge: misted distance -->
-      <path d="M0,250 C180,210 320,196 480,212 C660,232 820,188 1000,202 C1180,216 1320,196 1440,210 L1440,420 L0,420 Z"
-            fill="#2a4133" opacity="0.45"/>
-      <!-- mid ridge -->
-      <path d="M0,290 L90,256 L150,282 L240,250 L320,286 L430,256 L520,290 L640,260 L740,294 L860,262 L980,296 L1100,264 L1220,298 L1340,268 L1440,296 L1440,420 L0,420 Z"
-            fill="#223a2c" opacity="0.7"/>
-      <!-- near treeline: pines, grounds into the page -->
-      <path d="M0,360 L40,316 L70,360 L120,306 L160,360 L210,320 L250,360 L300,310 L350,360 L410,322 L450,360 L510,306 L560,360 L620,320 L670,360 L730,310 L780,360 L840,322 L890,360 L950,312 L1000,360 L1060,320 L1110,360 L1170,308 L1220,360 L1280,322 L1330,360 L1390,312 L1440,360 L1440,420 L0,420 Z"
-            fill="#16231C"/>
+<header class="hero" id="top">
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="moon" id="moon" aria-hidden="true"></div>
+  <div class="ridges" aria-hidden="true">
+    <svg viewBox="0 0 1440 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,262 C180,222 320,208 480,224 C660,244 820,200 1000,214 C1180,228 1320,208 1440,222 L1440,440 L0,440 Z" fill="#284036" opacity="0.4"/>
+      <path d="M0,300 L90,266 L150,292 L240,260 L320,296 L430,266 L520,300 L640,270 L740,304 L860,272 L980,306 L1100,274 L1220,308 L1340,278 L1440,306 L1440,440 L0,440 Z" fill="#203a2c" opacity="0.72"/>
+      <path d="M0,372 L40,328 L70,372 L120,318 L160,372 L210,332 L250,372 L300,322 L350,372 L410,334 L450,372 L510,318 L560,372 L620,332 L670,372 L730,322 L780,372 L840,334 L890,372 L950,324 L1000,372 L1060,332 L1110,372 L1170,320 L1220,372 L1280,334 L1330,372 L1390,324 L1440,372 L1440,440 L0,440 Z" fill="#15221B"/>
     </svg>
   </div>
+  <div class="cabin" aria-hidden="true"><span class="halo"></span><span class="win"></span></div>
+  <div class="mist" aria-hidden="true"><span class="m1"></span><span class="m2"></span></div>
 
   <div class="wrap hero-inner reveal">
-    <span class="eyebrow">A mountain home · Bailey, Colorado</span>
-    <!-- EDIT: the property name -->
+    <span class="eyebrow">A mountain home in Bailey, Colorado</span>
     <h1>The North Pine <em>Overlook</em></h1>
-    <p class="lede">A home set in the pines above Platte Canyon — surrounded by national forest, an hour from Denver, and a world away from it.</p>
+    <p class="lede">Tall pines, a long view down the canyon, and skies dark enough to relearn the constellations. A quiet mountain home above Bailey, an easy hour from Denver.</p>
     <div class="cta-row">
-      <!-- EDIT: button text + where it links -->
       <a href="#inquire" class="btn btn-primary">Plan your stay</a>
-      <a href="#about" class="btn btn-ghost">About the place</a>
+      <a href="#gallery" class="btn btn-ghost">Take a look</a>
     </div>
   </div>
-
   <div class="scrollcue" aria-hidden="true">Scroll<span></span></div>
 </header>
 
@@ -295,16 +267,14 @@
 <section class="section about" id="about">
   <div class="wrap about-grid">
     <div class="reveal">
-      <span class="eyebrow">The setting</span>
-      <h2>In the pines above Platte Canyon.</h2>
+      <span class="eyebrow">The home</span>
+      <h2 class="h-lg lead-in">Above the canyon, under the pines.</h2>
     </div>
     <div class="reveal">
-      <!-- EDIT: two short paragraphs about the place -->
-      <p>The North Pine Overlook sits among the ponderosa at around 7,750 feet, in the Front Range foothills where Bailey tucks into the canyon. Pike National Forest runs right up to the trees, and the North Fork of the South Platte threads through the valley below.</p>
-      <p>It's the kind of quiet that's hard to find within an hour of a city — long mornings, tall pines, and a herd of bighorn sheep that work the ridges nearby. Denver is about an hour east on Highway 285; most everything else is wilderness.</p>
-      <!-- EDIT: replace "[ add # ]" with how many the house sleeps. Keep or change the other two rows. -->
+      <p>The North Pine Overlook sits among the ponderosas at about 7,750 feet, where Bailey settles into Platte Canyon and Pike National Forest climbs right up to the yard. Mornings come cool and unhurried, with mist lifting off the ridge and woodsmoke on the air.</p>
+      <p>By evening the canyon goes still and the sky fills in. Watch the resident bighorns pick their way across the rocks, or just let the light fade from the porch. Denver is an hour east on 285. Everything else out here is forest.</p>
       <dl class="stat-stack">
-        <div class="stat"><dt>Sleeps</dt><dd>[ add # ]</dd></div>
+        <div class="stat"><dt>Sleeps</dt><dd><b>6</b></dd></div>
         <div class="stat"><dt>From Denver</dt><dd>~1 hour</dd></div>
         <div class="stat"><dt>Elevation</dt><dd>7,750 ft</dd></div>
       </dl>
@@ -312,95 +282,267 @@
   </div>
 </section>
 
-<!-- ============ HIGHLIGHTS ============ -->
-<section class="section highlights">
+<!-- ============ THE HOUSE ============ -->
+<!-- EDIT: these amenities are placeholders. Update them to match the actual house. -->
+<section class="section house" id="house">
   <div class="wrap">
     <div class="reveal">
-      <span class="eyebrow">The area</span>
-      <h2>An hour from the city, surrounded by the forest.</h2>
+      <span class="eyebrow">The house</span>
+      <h2 class="h-lg lead-in">Room for six, and everything you need.</h2>
+    </div>
+    <div class="amen-grid reveal">
+      <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M3 14h18M7 10V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg><b>Sleeps 6</b><span>Three bedrooms with room for the family or a few friends.</span></div>
+      <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v8H3zM7 3v8M3 14h7v7H3zM14 14h7v7h-7z"/></svg><b>Full kitchen</b><span>Everything you need to cook in, plus a table for six.</span></div>
+      <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2.5 3 4 5.5 4 8a4 4 0 0 1-8 0c0-2.5 1.5-5 4-8zM9 21h6"/></svg><b>Wood stove</b><span>A real fire for cold nights, with wood stocked.</span></div>
+      <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a10 10 0 0 1 14 0M8 16a5 5 0 0 1 8 0M12 19.5h.01M2 9a15 15 0 0 1 20 0"/></svg><b>Fast wifi</b><span>Reliable enough to work remote or stream by the fire.</span></div>
+      <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13M4 21h16M9 21v-6h6v6"/></svg><b>Wraparound deck</b><span>The best seat for the canyon view and the sunset.</span></div>
+      <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17l1-6h10l1 6M8 11V8a4 4 0 0 1 8 0v3M6 20v-3M18 20v-3"/></svg><b>Off-street parking</b><span>Room for two cars right at the door.</span></div>
+      <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Self check-in</b><span>Come and go on your schedule with a keypad lock.</span></div>
+      <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.5a3 3 0 1 0-4 2.8V11l-2 2 2 2v3l2-2 2 2 2-2 2 2 2-2 2 2v-3l2-2-2-2V8.3a3 3 0 1 0-4-2.8"/></svg><b>Dog friendly</b><span>Well-behaved dogs are welcome on the trails and inside.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREA ============ -->
+<section class="section area" id="area">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Just outside</span>
+      <h2 class="h-lg lead-in">Wilderness in every direction.</h2>
     </div>
     <div class="feat-grid reveal">
-      <!-- EDIT each card: change the heading + text as you like -->
       <article class="feat">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20l8-14 8 14M9 20l3-5 3 5"/></svg>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V9M12 9L6 5M12 9l6-4M12 15l-5-3M12 15l5-3"/></svg>
         <h3>Pike National Forest</h3>
-        <p>Over a million acres of pine and granite begin at the treeline — trails, old logging roads, and quiet you can walk straight into.</p>
+        <p>Over a million acres of pine and granite begin where the yard ends, with trails and old fire roads you can walk straight into.</p>
       </article>
       <article class="feat">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c2.5 0 2.5-3 5-3s2.5 3 5 3 2.5-3 5-3 2.5 3 3 3"/><path d="M3 14c2.5 0 2.5-3 5-3s2.5 3 5 3 2.5-3 5-3 2.5 3 3 3"/><path d="M3 20c2.5 0 2.5-3 5-3s2.5 3 5 3 2.5-3 5-3 2.5 3 3 3"/></svg>
-        <h3>Fly the South Platte</h3>
-        <p>The North Fork runs through the canyon below, holding wild brown and rainbow trout — some of the closest fly water to Denver.</p>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-4 6-4 9 0s6 4 9 0M3 18c3-3 6-3 9 0M6 8c2-2 4-2 6 0"/></svg>
+        <h3>The South Platte</h3>
+        <p>The North Fork winds through the canyon below, full of wild brown and rainbow trout, and some of the finest fly water near the city.</p>
       </article>
       <article class="feat">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8M12 8L6 4M12 8l6-4M12 14l-5-3M12 14l5-3"/></svg>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M5 20l5-9 4 6 2-3 3 6"/><circle cx="9" cy="6" r="2"/></svg>
         <h3>Trails &amp; state parks</h3>
-        <p>Footpaths into the forest, with Staunton State Park and the Lost Creek Wilderness — cliffs, waterfalls, and high-country miles — a short drive away.</p>
+        <p>Staunton State Park and the Lost Creek Wilderness sit a short drive away, with granite cliffs, hidden falls, and miles of high country.</p>
       </article>
       <article class="feat">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2.2 5.3-5.3 2.2 2.2-5.3z"/></svg>
-        <h3>An hour from Denver</h3>
-        <p>Close enough for a Friday-night drive up 285, far enough that the city feels like another world by the time you arrive.</p>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6z"/><path d="M18 14l.8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8z"/></svg>
+        <h3>Under the stars</h3>
+        <p>Far from any city glow, the night sky opens all the way up. Bring a blanket to the deck for the Milky Way and the odd shooting star.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEASONS ============ -->
+<section class="section seasons" id="seasons">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Year round</span>
+      <h2 class="h-lg lead-in">Good in every season.</h2>
+    </div>
+    <div class="season-grid reveal">
+      <div class="season"><div class="lab">Winter</div><h3>Snow in the pines and a fire going inside, with snowshoeing from the door and skiing within reach.</h3></div>
+      <div class="season"><div class="lab">Spring</div><h3>Snowmelt fills the creeks, the aspens leaf out, and the high trails slowly reopen.</h3></div>
+      <div class="season"><div class="lab">Summer</div><h3>Long, mild days for hiking and fishing, and cool nights that finally call for a blanket.</h3></div>
+      <div class="season"><div class="lab">Fall</div><h3>Gold aspens across the hillsides and elk bugling down in the valleys.</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEARBY ============ -->
+<!-- EDIT: drive times are approximate. Adjust to taste. -->
+<section class="section nearby" id="nearby">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Worth the drive</span>
+      <h2 class="h-lg lead-in">A few favorites nearby.</h2>
+    </div>
+    <div class="near-list reveal">
+      <div class="near"><span class="n-num">01</span><div class="n-main"><div class="n-name">Staunton State Park</div><div class="n-desc">Granite cliffs, a waterfall hike, and trails for every pace.</div></div><span class="n-dist">~15 min</span></div>
+      <div class="near"><span class="n-num">02</span><div class="n-main"><div class="n-name">North Fork, South Platte</div><div class="n-desc">Wild-trout fly water running right through the canyon.</div></div><span class="n-dist">Minutes</span></div>
+      <div class="near"><span class="n-num">03</span><div class="n-main"><div class="n-name">Lost Creek Wilderness</div><div class="n-desc">Remote granite domes and some of Colorado's best backpacking.</div></div><span class="n-dist">~30 min</span></div>
+      <div class="near"><span class="n-num">04</span><div class="n-main"><div class="n-name">Kenosha Pass</div><div class="n-desc">A stretch of the Colorado Trail famous for golden fall aspens.</div></div><span class="n-dist">~30 min</span></div>
+      <div class="near"><span class="n-num">05</span><div class="n-main"><div class="n-name">Mount Blue Sky Byway</div><div class="n-desc">One of the highest paved roads on the continent, in summer.</div></div><span class="n-dist">~1 hr</span></div>
+      <div class="near"><span class="n-num">06</span><div class="n-main"><div class="n-name">Downtown Denver</div><div class="n-desc">City dinners, museums, and the airport when you need them.</div></div><span class="n-dist">~1 hr</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION / MAP ============ -->
+<section class="section location" id="location">
+  <div class="wrap loc-grid">
+    <div class="reveal">
+      <span class="eyebrow">Getting here</span>
+      <h2 class="h-lg lead-in">An hour from the city.</h2>
+      <p>Set in the mountains southwest of Denver, just off US-285 as it climbs through Platte Canyon. Close enough for a Friday-evening drive, far enough that the city falls away behind you.</p>
+      <p class="map-note">Exact directions and the door code are shared with guests once a stay is booked.</p>
+    </div>
+    <div class="map-frame reveal">
+      <!-- Free OpenStreetMap embed centered on the Bailey area (not the exact address). -->
+      <iframe loading="lazy" title="Map of the Bailey, Colorado area"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-105.58%2C39.37%2C-105.39%2C39.46&layer=mapnik&marker=39.4106%2C-105.4828"></iframe>
     </div>
   </div>
 </section>
 
 <!-- ============ GALLERY ============ -->
-<section class="section gallery">
+<section class="section gallery" id="gallery">
   <div class="wrap">
     <div class="reveal">
-      <span class="eyebrow">The place</span>
-      <h2 style="font-size:clamp(2rem,4vw,3.1rem);max-width:14ch;margin-top:.4em">A look around.</h2>
+      <span class="eyebrow">A look around</span>
+      <h2 class="h-lg lead-in">See the place.</h2>
     </div>
-    <!-- EDIT: swap each .ph div for an <img> of your own (see note in the CSS) -->
+    <!-- EDIT: replace each .ph block with your own <img src="photo.jpg" alt="..." style="width:100%;height:100%;object-fit:cover">. Captions are suggestions. -->
     <div class="gal-grid reveal">
-      <figure><div class="ph"></div></figure>
-      <figure><div class="ph"></div></figure>
-      <figure><div class="ph"></div></figure>
-      <figure><div class="ph"></div></figure>
-      <figure><div class="ph"></div></figure>
+      <figure><div class="ph"><div class="cap"><b>The view down the canyon</b><small>Add your photo</small></div></div></figure>
+      <figure><div class="ph"><div class="cap"><b>Golden hour from the deck</b><small>Add your photo</small></div></div></figure>
+      <figure><div class="ph"><div class="cap"><b>The fire pit after dark</b><small>Add your photo</small></div></div></figure>
+      <figure><div class="ph"><div class="cap"><b>A trail from the door</b><small>Add your photo</small></div></div></figure>
+      <figure><div class="ph"><div class="cap"><b>First snow on the pines</b><small>Add your photo</small></div></div></figure>
     </div>
   </div>
 </section>
 
-<!-- ============ INQUIRE ============ -->
+<!-- ============ INQUIRE (form) ============ -->
 <section class="section inquire" id="inquire">
-  <div class="wrap">
-    <span class="eyebrow" style="justify-content:center">Get in touch</span>
-    <!-- EDIT: closing headline -->
-    <h2>Come up and stay a while.</h2>
-    <!-- EDIT: short closing line -->
-    <p>Send your dates and how many are coming, and we'll get you set up. We answer every note personally.</p>
-    <!-- EDIT: your real email address (appears twice) -->
-    <a class="mailto" href="mailto:hello@thenorthpineoverlook.com">hello@thenorthpineoverlook.com</a>
+  <div class="wrap inq-grid">
+    <div class="reveal">
+      <span class="eyebrow">Plan your stay</span>
+      <h2>Your spot in the pines is ready.</h2>
+      <p class="sub">Send your dates and how many are coming. We answer every note ourselves, usually the same day.</p>
+      <!-- EDIT: your real email (used by the form and shown here) -->
+      <p class="direct">Prefer email? <a href="mailto:hello@thenorthpineoverlook.com">hello@thenorthpineoverlook.com</a></p>
+    </div>
+
+    <div class="reveal">
+      <div class="form">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" placeholder="Your name" autocomplete="name"></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="you@email.com" autocomplete="email"></div>
+        <div class="field"><label for="f-arrive">Arrive</label><input id="f-arrive" type="date"></div>
+        <div class="field"><label for="f-depart">Depart</label><input id="f-depart" type="date"></div>
+        <div class="field full"><label for="f-guests">Guests</label><input id="f-guests" type="number" min="1" max="6" placeholder="How many (up to 6)"></div>
+        <div class="field full"><label for="f-msg">Anything else</label><textarea id="f-msg" placeholder="Tell us a little about your trip"></textarea></div>
+        <div class="submit">
+          <button type="button" class="btn btn-primary" onclick="sendInquiry()">Send inquiry</button>
+          <span class="form-note">Opens your email app with the details filled in.</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer>
-  <div class="wrap foot">
-    <span class="mark">The North Pine Overlook</span>
-    <!-- EDIT: footer line — remove the street number if you'd rather not list the exact address publicly -->
-    <small>© 2026 The North Pine Overlook · 745 North Pine Drive, Bailey, CO 80421</small>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg class="mark-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="18.5" stroke="#E0B45F" stroke-width="1.4"/>
+          <path d="M20 9l5 8h-3l4 6h-4l3 5H15l3-5h-4l4-6h-3z" fill="#E0B45F"/>
+          <path d="M9 30h22" stroke="#E0B45F" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span>The North Pine <b>Overlook</b></span>
+      </div>
+      <nav class="foot-nav">
+        <a href="#house">The house</a>
+        <a href="#area">The area</a>
+        <a href="#nearby">Nearby</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#inquire">Check dates</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <!-- EDIT: footer line. Remove the street number if you'd rather not list the exact address publicly. -->
+      <small>© 2026 The North Pine Overlook · Bailey, Colorado</small>
+      <small>Made among the pines</small>
+    </div>
   </div>
 </footer>
 
 <script>
-  // gentle reveal-on-scroll (skipped automatically when reduced motion is requested)
+  var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // starfield
   (function(){
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var sky = document.getElementById('stars');
+    if(!sky) return;
+    var n = window.innerWidth < 600 ? 48 : 88;
+    var frag = document.createDocumentFragment();
+    for(var i=0;i<n;i++){
+      var s = document.createElement('span'); s.className='star';
+      var size = (Math.random()*1.8+1).toFixed(2);
+      s.style.width=size+'px'; s.style.height=size+'px';
+      s.style.left=(Math.random()*100).toFixed(2)+'%';
+      s.style.top=(Math.random()*64).toFixed(2)+'%';
+      s.style.opacity=(Math.random()*0.5+0.3).toFixed(2);
+      if(!REDUCE && Math.random()<0.5){ s.classList.add('tw'); s.style.animationDelay=(Math.random()*4).toFixed(2)+'s'; }
+      frag.appendChild(s);
+    }
+    sky.appendChild(frag);
+  })();
+
+  // nav background + scroll progress + gentle hero parallax
+  (function(){
+    var nav = document.querySelector('.nav');
+    var bar = document.getElementById('progress');
+    var stars = document.getElementById('stars');
+    var moon = document.getElementById('moon');
+    var ticking = false;
+    function update(){
+      var y = window.scrollY || window.pageYOffset;
+      if(nav) nav.classList.toggle('scrolled', y > 40);
+      if(bar){
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (h > 0 ? (y / h * 100) : 0) + '%';
+      }
+      if(!REDUCE && y < window.innerHeight){
+        if(stars) stars.style.transform = 'translateY(' + (y * 0.28) + 'px)';
+        if(moon)  moon.style.transform  = 'translateY(' + (y * 0.18) + 'px)';
+      }
+      ticking = false;
+    }
+    update();
+    window.addEventListener('scroll', function(){
+      if(!ticking){ window.requestAnimationFrame(update); ticking = true; }
+    }, {passive:true});
+  })();
+
+  // reveal on scroll
+  (function(){
     var items = document.querySelectorAll('.reveal');
-    if(reduce || !('IntersectionObserver' in window)){
-      items.forEach(function(el){el.classList.add('in')});
-      return;
+    if(REDUCE || !('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('in'); }); return;
     }
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
     }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-    items.forEach(function(el){io.observe(el)});
+    items.forEach(function(el){ io.observe(el); });
   })();
+
+  // inquiry form -> opens a pre-filled email (no backend needed)
+  function sendInquiry(){
+    var v = function(id){ var el = document.getElementById(id); return el ? (el.value||'').trim() : ''; };
+    var name = v('f-name'), email = v('f-email');
+    if(!name || !email){
+      alert('Please add your name and email so we can write back.');
+      return;
+    }
+    var body = [
+      'Name: ' + name,
+      'Email: ' + email,
+      'Arrive: ' + (v('f-arrive') || '(not set)'),
+      'Depart: ' + (v('f-depart') || '(not set)'),
+      'Guests: ' + (v('f-guests') || '(not set)'),
+      '',
+      v('f-msg')
+    ].join('\n');
+    // EDIT: change this address to match the contact email above
+    window.location.href = 'mailto:hello@thenorthpineoverlook.com'
+      + '?subject=' + encodeURIComponent('Stay inquiry - The North Pine Overlook')
+      + '&body=' + encodeURIComponent(body);
+  }
 </script>
 
 </body>
