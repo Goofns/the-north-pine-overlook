@@ -1,0 +1,6 @@
+# Allow all search engines to crawl the whole site
+User-agent: *
+Allow: /
+
+# Where the sitemap lives
+Sitemap: https://thenorthpineoverlook.com/sitemap.xml
