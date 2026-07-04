@@ -166,7 +166,12 @@
   .loc-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
   .loc p{color:var(--sage);margin-top:1.3em;max-width:44ch}
   .map-frame{border:1px solid var(--moss);border-radius:10px;overflow:hidden;background:#1a2a22;min-height:360px;position:relative}
+  .map-frame{position:relative}
   .map-frame iframe{width:100%;height:420px;border:0;display:block;filter:grayscale(.25) brightness(.92)}
+  .map-cover{position:absolute;inset:0;z-index:2}
+  .map-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;background:rgba(12,23,18,.82);color:var(--birch);font-family:var(--body);font-size:.82rem;font-weight:600;letter-spacing:.02em;padding:9px 16px;border-radius:100px;border:1px solid var(--moss);pointer-events:none;opacity:0;transition:opacity .25s;white-space:nowrap}
+  .map-hint.show{opacity:1}
+  @media (hover:hover) and (pointer:fine){.map-cover{display:none}.map-hint{display:none}}
   .map-note{font-size:.78rem;color:var(--sage);margin-top:14px;letter-spacing:.02em}
 
   /* ---------------- GALLERY ---------------- */
@@ -409,6 +414,8 @@
       <!-- Free OpenStreetMap embed centered on the Bailey area (not the exact address). -->
       <iframe loading="lazy" title="Map of the Bailey, Colorado area"
         src="https://www.openstreetmap.org/export/embed.html?bbox=-105.58%2C39.37%2C-105.39%2C39.46&layer=mapnik&marker=39.4106%2C-105.4828"></iframe>
+      <div class="map-cover" aria-hidden="true"></div>
+      <div class="map-hint">Use two fingers to move the map</div>
     </div>
   </div>
 </section>
@@ -575,6 +582,36 @@
       + '?subject=' + encodeURIComponent('Stay inquiry - The North Pine Overlook')
       + '&body=' + encodeURIComponent(body);
   }
+</script>
+
+<script>
+  // Map: one finger scrolls the page, two fingers pan the map (tap-friendly on desktop)
+  (function(){
+    var frame = document.querySelector('.map-frame');
+    if(!frame) return;
+    var cover = frame.querySelector('.map-cover');
+    var hint = frame.querySelector('.map-hint');
+    if(!cover) return;
+    var t;
+    function flash(){
+      if(!hint) return;
+      hint.classList.add('show');
+      clearTimeout(t);
+      t = setTimeout(function(){ hint.classList.remove('show'); }, 1600);
+    }
+    function reset(){ cover.style.pointerEvents = ''; }
+    cover.addEventListener('touchstart', function(e){
+      if(e.touches.length >= 2){
+        cover.style.pointerEvents = 'none';   // let two fingers reach the map
+        if(hint) hint.classList.remove('show');
+      } else {
+        flash();                              // one finger: keep the page scrolling, nudge the user
+      }
+    }, {passive:true});
+    cover.addEventListener('touchend', reset);
+    cover.addEventListener('touchcancel', reset);
+    document.addEventListener('touchend', function(e){ if(e.touches.length === 0) reset(); }, {passive:true});
+  })();
 </script>
 
 </body>
