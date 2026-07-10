@@ -5,29 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="The North Pine Overlook — all my links in one place.">
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#f3f3f1">
+  <meta name="theme-color" content="#D5C6B7">
   <meta property="og:title" content="The North Pine Overlook | Links">
   <meta property="og:description" content="All my links in one place.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thenorthpineoverlook.com/indextree.html">
+  <meta property="og:image" content="https://thenorthpineoverlook.com/assets/brand/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <title>The North Pine Overlook | Links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/favicon-192.png" />
   <style>
     /* ------------------------------------------------------------------
        Classic Linktree light theme
        ------------------------------------------------------------------ */
     :root {
-      --bg: #f3f3f1;               /* subtle warm near-white */
-      --ink: #1e2330;              /* primary dark text */
-      --ink-soft: #4d535f;         /* bio / secondary text (AA on --bg) */
-      --ink-faint: #5f6672;        /* footer / socials (AA on --bg) */
-      --btn-bg: #ffffff;
-      --btn-border: rgba(30, 35, 48, 0.08);
-      --btn-shadow: 0 2px 8px rgba(30, 35, 48, 0.06);
-      --btn-shadow-hover: 0 10px 24px rgba(30, 35, 48, 0.12);
-      --avatar-bg-1: #2c3345;
-      --avatar-bg-2: #1a1f2b;
-      --toast-bg: #1e2330;
-      --toast-ink: #ffffff;
-      --focus: #1e2330;
+      --bg: #D5C6B7;               /* subtle warm near-white */
+      --ink: #1E1F14;              /* primary dark text */
+      --ink-soft: #5E4030;         /* bio / secondary text (AA on --bg) */
+      --ink-faint: #4A5138;        /* footer / socials (AA on --bg) */
+      --btn-bg: #F7F2EA;
+      --btn-border: rgba(30, 31, 20, 0.08);
+      --btn-shadow: 0 2px 8px rgba(30, 31, 20, 0.06);
+      --btn-shadow-hover: 0 10px 24px rgba(30, 31, 20, 0.12);
+      --avatar-bg-1: #1A404B;
+      --avatar-bg-2: #13242B;
+      --toast-bg: #1E1F14;
+      --toast-ink: #F7F2EA;
+      --focus: #1A404B;
       --radius-pill: 999px;
     }
 
@@ -40,7 +49,7 @@
     body {
       background: var(--bg);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
       line-height: 1.5;
       min-height: 100vh;
@@ -67,6 +76,7 @@
       text-align: center;
     }
 
+    .avatar img { width: 62%; height: auto; display: block; }
     .avatar {
       width: 96px;
       height: 96px;
@@ -80,10 +90,11 @@
       justify-content: center;
       user-select: none;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 14px rgba(30, 35, 48, 0.14);
+      box-shadow: 0 4px 14px rgba(30, 31, 20, 0.14);
     }
 
     .profile h1 {
+      font-family: "Fraunces", Georgia, serif;
       margin-top: 16px;
       font-size: 20px;
       font-weight: 700;
@@ -154,7 +165,7 @@
     .link-item:hover .link-btn,
     .link-item:focus-within .link-btn {
       box-shadow: var(--btn-shadow-hover);
-      border-color: rgba(30, 35, 48, 0.14);
+      border-color: rgba(30, 31, 20, 0.14);
     }
 
     .link-btn:focus-visible {
@@ -214,7 +225,7 @@
 
     .share-btn:hover,
     .share-btn:focus-visible {
-      background: rgba(30, 35, 48, 0.07);
+      background: rgba(30, 31, 20, 0.07);
       color: var(--ink);
     }
 
@@ -259,7 +270,7 @@
     .socials a:hover,
     .socials a:focus-visible {
       color: var(--ink);
-      background: rgba(30, 35, 48, 0.06);
+      background: rgba(30, 31, 20, 0.06);
     }
 
     .socials a:focus-visible {
@@ -301,7 +312,7 @@
       font-weight: 600;
       padding: 10px 20px;
       border-radius: var(--radius-pill);
-      box-shadow: 0 8px 24px rgba(30, 35, 48, 0.25);
+      box-shadow: 0 8px 24px rgba(30, 31, 20, 0.25);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -333,9 +344,9 @@
 <body>
   <main class="page">
     <header class="profile">
-      <div class="avatar" id="avatar" aria-hidden="true">NP</div>
+      <div class="avatar" id="avatar" aria-hidden="true"><img src="assets/brand/icon-cream.svg" alt="" /></div>
       <h1 id="profile-name">The North Pine Overlook</h1>
-      <p class="handle" id="profile-handle">@thenorthpineoverlook</p>
+      <p class="handle" id="profile-handle">@northpineoverlook</p>
       <p class="bio" id="profile-bio">All my links in one place</p>
     </header>
 
@@ -375,14 +386,14 @@
 
     const PROFILE = {
       name: "The North Pine Overlook",
-      handle: "@thenorthpineoverlook",
-      bio: "All my links in one place",
-      initials: "NP"
+      handle: "@northpineoverlook",
+      bio: "Mountain cabin above Bailey, CO — sleeps 6 · hot tub · big views. An easy hour from Denver.",
+      initials: ""
     };
 
     const LINKS = [
       { label: "Website",   icon: "globe",     url: "https://thenorthpineoverlook.com/" },
-      { label: "Instagram", icon: "instagram", url: "https://www.instagram.com/thenorthpineoverlook/" },
+      { label: "Instagram", icon: "instagram", url: "https://www.instagram.com/northpineoverlook/" },
       { label: "Facebook",  icon: "facebook",  url: "https://www.facebook.com/TheNorthPineOverlook/" },
       { label: "TikTok",    icon: "tiktok",    url: "https://www.tiktok.com/@thenorthpineoverlook" },
       { label: "YouTube",   icon: "youtube",   url: "https://www.youtube.com/@TheNorthPineOverlook" },
@@ -391,7 +402,7 @@
 
     /* Small bare-icon row under the buttons (edit or empty the list). */
     const SOCIALS = [
-      { label: "Instagram", icon: "instagram", url: "https://www.instagram.com/thenorthpineoverlook/" },
+      { label: "Instagram", icon: "instagram", url: "https://www.instagram.com/northpineoverlook/" },
       { label: "Facebook",  icon: "facebook",  url: "https://www.facebook.com/TheNorthPineOverlook/" },
       { label: "TikTok",    icon: "tiktok",    url: "https://www.tiktok.com/@thenorthpineoverlook" },
       { label: "YouTube",   icon: "youtube",   url: "https://www.youtube.com/@TheNorthPineOverlook" },
@@ -499,7 +510,8 @@
         .map(function (word) { return word.charAt(0); })
         .join('')
         .toUpperCase();
-      document.getElementById('avatar').textContent = initials || '?';
+      var avEl = document.getElementById('avatar');
+    if (!avEl.querySelector('img')) avEl.textContent = initials || '?';
       document.getElementById('profile-name').textContent = PROFILE.name;
       document.getElementById('profile-handle').textContent = PROFILE.handle;
       document.getElementById('profile-bio').textContent = PROFILE.bio;
