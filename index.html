@@ -91,9 +91,9 @@
   /* ---------------- NAV ---------------- */
   .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,46px);transition:background .4s ease,padding .4s ease,border-color .4s ease;border-bottom:1px solid transparent}
   .nav.scrolled{background:rgba(16,33,40,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px clamp(20px,5vw,46px);border-bottom:1px solid var(--moss)}
-  .nav .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-size:1.06rem;color:var(--birch)}
+  .nav .brand{font-family:var(--display);font-size:1.05rem;color:var(--birch);display:inline-flex;align-items:center;gap:12px}
   .nav .brand b{color:var(--lantern);font-weight:500;font-style:italic}
-  .mark-svg{width:26px;height:26px;flex:none}
+  .nav .brand-icon{width:30px;height:30px;display:block}
 .foot-brand .foot-logo{width:200px;height:auto;display:block}
   .nav-links{display:flex;align-items:center;gap:30px}
   .nav-links a{font-size:.84rem;letter-spacing:.04em;color:var(--sage);transition:color .25s ease}
@@ -274,17 +274,14 @@
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
-  <a class="brand" href="#top">
-    <img class="mark-svg" src="assets/brand/icon-cream.svg" alt="" width="26" height="26" />
-    <span>The North Pine <b>Overlook</b></span>
-  </a>
+  <a class="brand" href="/"><img class="brand-icon" src="assets/brand/icon-cream.svg" alt="" width="30" height="30" />The North Pine <b>Overlook</b></a>
   <div class="nav-links">
-    <a href="#house">The house</a>
-    <a href="#area">The area</a>
-    <a href="#nearby">Nearby</a>
-    <a href="#gallery">Gallery</a>
+    <a href="/#house">The cabin</a>
+    <a href="/#area">The area</a>
+    <a href="/#nearby">Nearby</a>
+    <a href="/#gallery">Gallery</a>
   </div>
-  <a class="pill" href="#inquire">Check dates</a>
+  <a class="pill" href="/#inquire">Check dates</a>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -517,17 +514,18 @@
         <a href="#top" aria-label="The North Pine Overlook home"><img class="foot-logo" src="assets/brand/logo-main-cream.svg" alt="The North Pine Overlook" /></a>
       </div>
       <nav class="foot-nav">
-        <a href="#house">The house</a>
-        <a href="#area">The area</a>
-        <a href="#nearby">Nearby</a>
-        <a href="#gallery">Gallery</a>
+        <a href="/">Home</a>
+        <a href="/#house">The cabin</a>
+        <a href="/#area">The area</a>
+        <a href="/#nearby">Nearby</a>
+        <a href="/#gallery">Gallery</a>
         <a href="/things-to-do.html">Things to Do</a>
         <a href="/hiking.html">Hiking</a>
         <a href="/fishing.html">Fishing</a>
         <a href="/rates.html">Rates</a>
         <a href="/directions.html">Directions</a>
         <a href="/what-to-bring.html">What to Bring</a>
-        <a href="#inquire">Check dates</a>
+        <a href="/#inquire">Check dates</a>
         <a href="https://www.instagram.com/northpineoverlook" rel="me noopener" target="_blank">Instagram</a>
       </nav>
     </div>

@@ -36,7 +36,7 @@ img{display:block;max-width:100%}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,46px);transition:background .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(16,33,40,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px clamp(20px,5vw,46px);border-bottom:1px solid var(--moss)}
 .nav .brand{font-family:var(--display);font-size:1.05rem;color:var(--birch);display:inline-flex;align-items:center;gap:12px}
-.nav .brand-icon{width:34px;height:34px;display:block}
+.nav .brand-icon{width:30px;height:30px;display:block}
 .nav .brand b{color:var(--lantern);font-weight:500;font-style:italic}
 .nav-links{display:flex;align-items:center;gap:30px}
 .nav-links a{font-size:.84rem;letter-spacing:.04em;color:var(--sage);transition:color .25s}
@@ -122,10 +122,11 @@ a:focus-visible,.btn:focus-visible,.pill:focus-visible{outline:2px solid var(--l
 </head>
 <body>
 <nav class="nav">
-  <a class="brand" href="/"><img src="assets/brand/icon-cream.svg" alt="" class="brand-icon" width="34" height="34" />The North Pine <b>Overlook</b></a>
+  <a class="brand" href="/"><img class="brand-icon" src="assets/brand/icon-cream.svg" alt="" width="30" height="30" />The North Pine <b>Overlook</b></a>
   <div class="nav-links">
     <a href="/#house">The cabin</a>
     <a href="/#area">The area</a>
+    <a href="/#nearby">Nearby</a>
     <a href="/#gallery">Gallery</a>
   </div>
   <a class="pill" href="/#inquire">Check dates</a>
@@ -186,16 +187,20 @@ a:focus-visible,.btn:focus-visible,.pill:focus-visible{outline:2px solid var(--l
   <div class="wrap foot">
     <a href="/" aria-label="The North Pine Overlook home"><img src="assets/brand/logo-main-cream.svg" alt="The North Pine Overlook" class="foot-logo" /></a>
     <nav>
-      <a href="/">Home</a>
-      <a href="/things-to-do.html">Things to Do</a>
-      <a href="/hiking.html">Hiking</a>
-      <a href="/fishing.html">Fishing</a>
-      <a href="/rates.html">Rates</a>
-      <a href="/directions.html">Directions</a>
-      <a href="/what-to-bring.html">What to Bring</a>
-      <a href="/#inquire">Check dates</a>
-      <a href="https://www.instagram.com/northpineoverlook" rel="me noopener" target="_blank">Instagram</a>
-    </nav>
+        <a href="/">Home</a>
+        <a href="/#house">The cabin</a>
+        <a href="/#area">The area</a>
+        <a href="/#nearby">Nearby</a>
+        <a href="/#gallery">Gallery</a>
+        <a href="/things-to-do.html">Things to Do</a>
+        <a href="/hiking.html">Hiking</a>
+        <a href="/fishing.html">Fishing</a>
+        <a href="/rates.html">Rates</a>
+        <a href="/directions.html">Directions</a>
+        <a href="/what-to-bring.html">What to Bring</a>
+        <a href="/#inquire">Check dates</a>
+        <a href="https://www.instagram.com/northpineoverlook" rel="me noopener" target="_blank">Instagram</a>
+      </nav>
     <!-- EDIT: remove the street number below if you'd rather not list the exact address publicly -->
     <small>&copy; 2026 The North Pine Overlook &middot; 745 North Pine Drive, Bailey, CO 80421</small>
   </div>
