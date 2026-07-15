@@ -1,5 +1,9 @@
 THE NORTH PINE OVERLOOK — WEBSITE REBRAND NOTES
 ================================================
+HISTORICAL DESIGN NOTES ONLY. Do not use this file to restore property facts,
+social links, or structured data. The reviewed site now uses claim-safe copy,
+a WebSite JSON-LD object, and no sameAs profiles until live URLs are verified.
+
 fishing.html is fully rebranded. To carry the brand across the other pages
 (index, things-to-do.html, hiking.html, rates.html, directions.html,
 what-to-bring.html), make these same edits in each file:
@@ -42,13 +46,13 @@ CSS: .nav .brand{...;display:inline-flex;align-items:center;gap:12px}
 Footer mark → full primary logo:
 <a href="/" aria-label="The North Pine Overlook home"><img src="assets/brand/logo-main-cream.svg" alt="The North Pine Overlook" class="foot-logo" /></a>
 CSS: .foot .foot-logo{width:190px;height:auto;display:block}
-Add to footer nav: <a href="https://www.instagram.com/northpineoverlook" rel="me noopener" target="_blank">Instagram</a>
+Add a social footer link only after its live URL is recorded as Verified in
+Property Facts. Do not infer a handle from this historical note.
 
 5) JSON-LD (homepage especially)
-Add inside the LodgingBusiness object:
-"logo":"https://thenorthpineoverlook.com/assets/brand/icon-512.png",
-"image":"https://thenorthpineoverlook.com/assets/brand/og-image.jpg",
-"sameAs":["https://www.instagram.com/northpineoverlook"]
+Use the current WebSite + publisher Organization block from index.html. Do not
+restore LodgingBusiness, occupancy, address, coordinates, amenities, or sameAs
+until the corresponding facts and profiles are owner-verified and bookable.
 
 6) UPLOAD
 Copy the whole assets/brand/ folder to the site root so paths resolve:

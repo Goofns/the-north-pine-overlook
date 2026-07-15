@@ -1,0 +1,6 @@
+query,page,clicks,impressions,CTR,position
+bailey cabin,https://northpineoverlook.com/,3,30,10%,9
+hiking near bailey,https://northpineoverlook.com/hiking.html,0,5,0%,20
+north pine overlook,https://northpineoverlook.com/,4,90,4.44%,1.2
+busy query,https://northpineoverlook.com/rates.html,4,60,6.67%,13
+lost query,https://northpineoverlook.com/what-to-bring.html,0,20,0%,18
