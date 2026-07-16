@@ -4,11 +4,11 @@ Do not copy marketing claims from the current site into **Property Facts** witho
 
 ## Current audited state — July 15, 2026
 
-Verified system facts: the public brand name, Bailey/Colorado area wording, canonical website, public contact email, local no-precise-location guardrail, and current repository measurement setup. Owner-confirmed facts now also include three bedrooms, 2.5 bathrooms, a current maximum of eight overnight guests subject to county/permit revalidation, 3:00 PM check-in, 10:00 AM check-out, pets allowed, lower-level amenities requiring stairs, the direct-booking inquiry email, the approved Instagram profile URL, and the planned-only renovation list.
+Verified system facts: the public brand name, Bailey/Colorado area wording, canonical website, public contact email, local no-precise-location guardrail, and current repository measurement setup. Owner-confirmed facts now also include three bedrooms, 2.5 bathrooms, a current maximum of eight overnight guests subject to county/permit revalidation, 3:00 PM check-in, 10:00 AM check-out, pets allowed, future pet and cleaning fees, lower-level amenities requiring stairs, the direct-booking inquiry email, the approved Instagram profile URL, and the planned-only renovation list.
 
 Legacy claims for six guests, finished hot tub/sauna, property-specific drive times, and a late-August opening were removed from public copy or placed on publishing hold. The old six-guest claim must not be restored: the owner has confirmed a current maximum of eight, but the applicable county/permit limit must be rechecked before reservations open and before any public occupancy claim.
 
-For the fastest safe handoff, the owner can provide one dated source for each of these first: legal operating name; county/permit occupancy limit; completed STR license and display rule; installed/bookable amenities; detailed pet and cancellation policies; complete accessibility information; property access/vehicle guidance; payment process and listing URLs; additional approved social URLs; and photo-rights confirmation.
+For the fastest safe handoff, the owner can provide one dated source for each of these first: legal operating name; county/permit occupancy limit; completed STR license and display rule; installed/bookable amenities; final minimum-stay, pet-fee, cleaning-fee, and cancellation policies; complete accessibility information; property access/vehicle guidance; payment process and listing URLs; additional approved social URLs; and photo-rights confirmation.
 
 ## Property and compliance
 
@@ -40,16 +40,16 @@ Until an item passes all applicable checks, describe it only as planned and do n
 
 - [x] Check-in time — 3:00 PM, owner-confirmed July 15, 2026
 - [x] Check-out time — 10:00 AM, owner-confirmed July 15, 2026
-- [ ] Minimum-stay rules
+- [ ] Minimum-stay rules - owner expects a two-night minimum, possible one-night stays for close-in unbooked dates, and possible three-night minimums during select periods; final revenue-management setup will be completed about one week before launch
 - [x] Pets allowed — owner-confirmed July 15, 2026
-- [ ] Detailed pet rules and any applicable fee
-- [ ] Cleaning fee
-- [ ] Taxes and fee presentation
-- [ ] Cancellation policy — platform-specific terms remain provisional; do not publish the tentative refund windows as final policy
+- [ ] Detailed pet rules and final pet fee - pets are allowed, guest cleanup rules will apply, and the likely pet fee is $75 or $100; final amount and rules remain pending
+- [ ] Final cleaning fee - a cleaning fee will apply; amount remains pending cleaner interviews and selected cleaner rates
+- [x] Taxes and fee presentation - Airbnb and Vrbo present taxes through their checkout flows after the appropriate tax settings are configured; owner-confirmed July 15, 2026
+- [ ] Cancellation policy - platform-specific terms remain provisional; likely policy is full refund outside 30 days before check-in, 50% refund inside 30 days, and no refund inside two weeks, but final platform/direct-booking policy will be selected during listing setup
 - [x] Direct-booking inquiry contact — `honkytonkiesproperties@gmail.com`, owner-confirmed July 15, 2026; dates are manually blocked after payment is received
 - [ ] Direct-booking payment method, final price/fee disclosure, cancellation terms, and confirmation workflow
 - [ ] Airbnb, Vrbo, or other listing URLs — planned for launch but not yet available
-- [ ] Opening date and actual available dates
+- [ ] Opening date and actual available dates - hold off on publishing a date; September 1, 2026 is likely acceptable, with the last day or two of August 2026 also possible
 
 ## Travel and local information
 
