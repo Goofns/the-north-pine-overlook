@@ -53,12 +53,12 @@ Until an item passes all applicable checks, describe it only as planned and do n
 
 ## Travel and local information
 
-- [ ] Drive times verified from the property, with route and normal-condition context
-- [ ] Seasonal road and vehicle guidance approved by the owner
-- [ ] Nearby attractions the owner is comfortable recommending
-- [ ] Trail access, fees, hours, dog rules, accessibility, and seasonal closures checked with primary sources
-- [ ] Fishing access, stocking, licenses, and current regulations checked with primary sources
-- [ ] No promise of wildlife sightings, catches, weather, road conditions, or ranking outcomes
+- [ ] Drive times verified from the property, with route and normal-condition context — the private origin is not present in the workspace; the route table and verification method are ready in `TRAVEL-LOCAL-VERIFICATION.md`
+- [ ] Seasonal road and vehicle guidance approved by the owner — CDOT, Park County, Forest Service, and operator guidance was checked July 15, 2026; the owner still must approve the property-specific route, maintenance, snow-removal, driveway, and vehicle wording
+- [ ] Nearby attractions the owner is comfortable recommending — a source-verified shortlist is ready in `TRAVEL-LOCAL-VERIFICATION.md`; owner approval is still required
+- [x] Trail access, fees, hours, dog rules, accessibility, and seasonal closures checked with primary sources on July 15, 2026; unknowns and same-day rechecks are documented in `TRAVEL-LOCAL-VERIFICATION.md`
+- [x] Fishing access, stocking, licenses, and current regulations checked with primary sources on July 15, 2026; stocking schedules are not treated as proof of recent stocking
+- [x] No promise of wildlife sightings, catches, weather, road conditions, access, parking, or ranking outcomes — public copy reviewed July 15, 2026 and protected by the SEO quality check
 
 Local safety, fees, regulations, trail conditions, and hours need a new check immediately before each publication even if an older value appears in **Property Facts**.
 

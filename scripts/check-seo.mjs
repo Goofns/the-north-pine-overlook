@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import { findProhibitedOutcomePromises } from "./outcome-promises.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDirectory, "..");
@@ -500,6 +501,14 @@ for (const page of sitemapPages) {
       const excerpt = normalizeText(match[0].replace(/<!--|-->/g, " ")).slice(0, 110);
       addFinding("unresolved-marker", page.file, `Unresolved ${label}: “${excerpt}${excerpt.length === 110 ? "…" : ""}”`, page.source, match.index, severity);
     }
+  }
+}
+
+for (const page of sitemapPages) {
+  const text = visibleText(page.source);
+  for (const match of findProhibitedOutcomePromises(text)) {
+    const sourceIndex = page.source.toLowerCase().indexOf(match.text.toLowerCase());
+    addFinding("outcome-promise", page.file, `Public copy contains a prohibited ${match.label}: "${match.text}"`, page.source, sourceIndex >= 0 ? sourceIndex : 0);
   }
 }
 

@@ -32,7 +32,7 @@ Recommended content: {{Suggested Content}}
 Verified property facts: {{Verified Property Facts only}}
 Approved internal pages: {{Internal Links}}
 
-Help a person genuinely planning a Bailey, Colorado trip. Use property details only when present in the verified facts. Do not invent drive times, weather, amenities, prices, policies, trail conditions, regulations, sources, or local experience. Combine overlapping questions. Recommend owned photos. End with an appropriate next step for the property's current booking stage.
+Help a person genuinely planning a Bailey, Colorado trip. Use property details only when present in the verified facts. Do not invent drive times, weather, amenities, prices, policies, trail conditions, regulations, sources, or local experience. Never promise wildlife sightings, catches, stocking, access, parking, weather, road conditions, or search-ranking outcomes. Combine overlapping questions. Recommend owned photos. End with an appropriate next step for the property's current booking stage.
 
 Return JSON with:
 working_title, audience, search_intent, opening_answer, sections,

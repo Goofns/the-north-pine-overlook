@@ -22,6 +22,8 @@ Use `EMAIL-TEMPLATES.md` for the weekly, review-ready, monthly, and failure noti
 
 Use `LOCAL-SOURCE-REGISTER.md` when a draft mentions trails, fishing, scenic routes, parks, museums, or local businesses. Its links and audit decisions support review, but every time-sensitive claim still requires a same-day source check before publishing.
 
+Use `TRAVEL-LOCAL-VERIFICATION.md` for the dated travel/fishing audit, owner recommendation shortlist, private-origin drive-time protocol, and property-specific road-approval boundary.
+
 ## Required status flow
 
 `New -> Approved -> Drafting -> Review -> Publish Approved -> Published`
