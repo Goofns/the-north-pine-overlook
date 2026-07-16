@@ -1,0 +1,32 @@
+name: SEO quality
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-seo:
+    name: Check static-site SEO
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run SEO quality checks
+        run: node scripts/check-seo.mjs
+
+      - name: Validate automation helpers
+        run: |
+          node --check scripts/indexnow.mjs
+          node --test seo-automation/gsc-processor/tests/*.test.mjs

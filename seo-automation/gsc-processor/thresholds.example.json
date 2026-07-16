@@ -1,0 +1,16 @@
+{
+  "new-site": {
+    "min_impressions": 10,
+    "max_clicks": 2,
+    "min_position": 4,
+    "max_position": 30,
+    "max_ctr": null
+  },
+  "established-site": {
+    "min_impressions": 50,
+    "max_clicks": null,
+    "min_position": 4,
+    "max_position": 20,
+    "max_ctr": "site-average"
+  }
+}

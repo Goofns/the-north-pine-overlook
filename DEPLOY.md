@@ -1,54 +1,38 @@
-# Deploy the full-site rebrand — Goofns/the-north-pine-overlook
+# Deploy the reviewed site
 
-This package contains every changed file, already at the right paths.
-Your `assets/brand/` folder is already in the repo from the last upload — nothing new needed there.
+The site is hosted with GitHub Pages. Deploy through a reviewed branch and pull request; do not upload files directly to `main`.
 
-## What changed
-- index.html            — full rebrand (navy/cream/clay palette, real logos replace the gold
-                          placeholder SVG marks, canonical + OG/Twitter meta added, JSON-LD
-                          logo/sameAs, Instagram footer link, Poppins body font)
-- things-to-do.html     — full rebrand (same treatment as fishing)
-- hiking.html           — full rebrand
-- rates.html            — full rebrand
-- directions.html       — full rebrand
-- what-to-bring.html    — full rebrand
-- fishing.html          — two tiny touch-ups (scrolled-nav tint + glow tone) so all pages
-                          share one exact color system
-- indextree.html        — link-in-bio page rebranded: brand cream background, icon avatar,
-                          handle corrected to @northpineoverlook, brand fonts, OG image
-- favicon.ico           — regenerated with the brand icon (replaces old mark)
-- favicon-192.png       — regenerated with the brand icon
+## Release gate
 
-## Option A — GitHub website (2 minutes, no tools)
-1. Open https://github.com/Goofns/the-north-pine-overlook
-2. Click "Add file" → "Upload files"
-3. Drag ALL files from this zip into the upload area
-   (GitHub will show them as replacing the existing ones — that's correct)
-4. Commit message: "Full-site rebrand — official palette, logos, favicons"
-5. Click "Commit changes" to main
-6. GitHub Pages redeploys automatically — give it 1–2 minutes, then hard-refresh
-   the site (Ctrl/Cmd+Shift+R) since browsers cache CSS and favicons aggressively.
+Before opening a pull request:
 
-## Option B — git command line
-    git clone https://github.com/Goofns/the-north-pine-overlook.git
-    cd the-north-pine-overlook
-    # unzip this package over the repo folder, replacing files, then:
-    git add -A
-    git commit -m "Full-site rebrand — official palette, logos, favicons"
-    git push
+1. Complete the owner-fact checklist for every claim included in the release.
+2. Confirm no legacy Pinterest JPEG is being published or promoted; see `pinterest/PUBLISHING-HOLD.md`.
+3. Run:
 
-## Two things to verify yourself
-1. SOCIAL HANDLES on indextree.html — your brand guide specifies @northpineoverlook,
-   so I updated Instagram everywhere. But the TikTok / YouTube / Facebook / Pinterest
-   URLs still say "TheNorthPineOverlook" from the template. Open indextree.html, find
-   the LINKS and SOCIALS lists near the bottom, and correct any URL to the accounts
-   you actually registered (delete entries for platforms you're not on).
-2. HOUSEKEEPING (optional) — the social-media kit files from last time
-   (covers/, profile-pictures/, README-social-kit.txt, REBRAND-NOTES.txt) are sitting
-   in the repo root, which means they're publicly downloadable on your website.
-   Harmless, but you can delete them from the repo and keep them on your computer.
+   ```text
+   node scripts/check-seo.mjs
+   node --test seo-automation/gsc-processor/tests/*.test.mjs
+   node --check scripts/indexnow.mjs
+   ```
 
-## After photography day
-Swap the homepage link-preview image: replace assets/brand/og-image.jpg with the
-twilight exterior shot (same filename, 1200x630) — a real photo will out-click the
-logo card on shared links.
+4. Review the changed pages visually on desktop and mobile.
+5. Confirm titles, descriptions, canonical URLs, structured data, internal links, forms, `robots.txt`, and `sitemap.xml` match the exact reviewed version.
+6. Confirm no private address, numeric property coordinates, credentials, guest data, or unlicensed media are included.
+
+## GitHub workflow
+
+Create a release branch from the intended base, commit only the reviewed scope, push that branch, and open a pull request. Require a human review before merging to `main`. This repository may already contain local commits or unrelated owner work, so inspect the branch and diff before staging anything.
+
+The SEO quality workflow will rerun the claim and structural checks in GitHub. A passing check is necessary but does not replace owner approval.
+
+## After merge
+
+1. Wait for GitHub Pages to finish.
+2. Verify the live homepage and every changed URL, including the canonical URL and mobile layout.
+3. Verify `/robots.txt`, `/sitemap.xml`, the Google/Bing/Pinterest verification artifacts, and the public IndexNow key file.
+4. Confirm the sitemap in Search Console and Bing Webmaster Tools.
+5. Dry-run IndexNow for the deployed URLs. Add `--submit` only after the live pages are confirmed.
+6. Record the release URL, timestamp, approved content version, and outcome in the command center.
+
+Do not deploy from the current working tree until the owner-fact gaps and media-rights holds relevant to the release are resolved.
