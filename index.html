@@ -46,7 +46,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
 
 <style>
   
@@ -82,7 +84,7 @@
   .lead-in{margin-top:.5em}
 
   /* scroll progress */
-  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--lantern);z-index:200;transition:width .08s linear}
+  .progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform;background:var(--lantern);z-index:200;transition:transform .08s linear}
 
   /* ---------------- NAV ---------------- */
   .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,46px);transition:background .4s ease,padding .4s ease,border-color .4s ease;border-bottom:1px solid transparent}
@@ -308,6 +310,7 @@
   </div>
   <div class="scrollcue" aria-hidden="true">Scroll<span></span></div>
 </header>
+<main id="content">
 
 <!-- ============ ABOUT ============ -->
 <section class="section about" id="about">
@@ -508,11 +511,12 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
+</main>
 <footer>
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a href="#top" aria-label="The North Pine Overlook home"><img class="foot-logo" src="assets/brand/logo-main-cream.svg" alt="The North Pine Overlook" /></a>
+        <a href="#top" aria-label="The North Pine Overlook home"><img class="foot-logo" src="assets/brand/logo-main-cream.svg" alt="The North Pine Overlook" width="200" height="138" /></a>
       </div>
       <nav class="foot-nav">
         <a href="/">Home</a>
@@ -568,14 +572,24 @@
     var stars = document.getElementById('stars');
     var moon = document.getElementById('moon');
     var ticking = false;
+    // cache geometry so the scroll handler never forces a reflow
+    var winH = 0, scrollable = 0;
+    function measure(){
+      winH = window.innerHeight;
+      scrollable = document.documentElement.scrollHeight - winH;
+    }
+    measure();
+    window.addEventListener('resize', function(){
+      if(!ticking){ window.requestAnimationFrame(function(){ measure(); update(); }); ticking = true; }
+    }, {passive:true});
+    window.addEventListener('load', measure);
     function update(){
       var y = window.scrollY || window.pageYOffset;
       if(nav) nav.classList.toggle('scrolled', y > 40);
       if(bar){
-        var h = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.width = (h > 0 ? (y / h * 100) : 0) + '%';
+        bar.style.transform = 'scaleX(' + (scrollable > 0 ? Math.min(y / scrollable, 1) : 0) + ')';
       }
-      if(!REDUCE && y < window.innerHeight){
+      if(!REDUCE && y < winH){
         if(stars) stars.style.transform = 'translateY(' + (y * 0.28) + 'px)';
         if(moon)  moon.style.transform  = 'translateY(' + (y * 0.18) + 'px)';
       }
