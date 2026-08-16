@@ -1,0 +1,1 @@
+social-poster upload_to_public_host() wiring test
