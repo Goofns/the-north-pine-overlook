@@ -378,8 +378,13 @@ footer{border-top:1px solid var(--moss-soft);padding:var(--s-6) 0 var(--s-4);bac
 .foot-bottom small{color:var(--sage);font-size:.8rem;letter-spacing:.03em}
 
 /* ---------------- motion / a11y ---------------- */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
-.reveal.in{opacity:1;transform:none}
+/* Reveal-on-scroll is progressive enhancement only. Content is visible by
+   default and is hidden ONLY once the shared script has confirmed it is running
+   (it sets html.js). If site.js is slow, blocked, cached out, or fails, the page
+   still renders fully instead of going blank. */
+.reveal{opacity:1;transform:none}
+html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+html.js .reveal.in{opacity:1;transform:none}
 .skip{position:absolute;left:-9999px;top:0;z-index:300;background:var(--lantern);color:#1E1F14;padding:12px 20px;border-radius:0 0 var(--radius-sm) 0;font-weight:600;font-size:.88rem}
 .skip:focus{left:0}
 a:focus-visible,.btn:focus-visible,.pill:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--lantern);outline-offset:3px;border-radius:4px}

@@ -24,6 +24,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css" />
+<script>/* progressive enhancement flag: only hide .reveal content if JS is alive */
+if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.className+=" js";}</script>
+
 <style>
 /* events.html only: entry list + card grid for the dated event entries */
 .eventspage-intro{color:var(--sage);font-size:.98rem}
