@@ -49,209 +49,39 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
-
-<style>
-
-:root{/* Official TNPO palette: navy #1A404B, cream #D5C6B7, clay #A96949, green #646F4E, red #8D3C3C, brown #7C5640, ink #1E1F14 (+contrast tints) */
-    --night:#13242B;
-    --spruce:#1A404B;
-    --pine:#1F4956;
-    --pine-card:#26545F;
-    --moss:#37616D;
-    --birch:#F0E9DF;
-    --sage:#ABB596;
-    --lantern:#E2B187;
-    --ember:#A96949;
-    --maxw:1160px;
-    --display:"Fraunces",Georgia,serif;
-    --body:"Poppins","Helvetica Neue",Arial,sans-serif;
-  }
-
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--spruce);color:var(--birch);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
-
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px}
-  .section{padding:124px 0}
-
-  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--lantern);display:inline-flex;align-items:center;gap:.85em}
-  .eyebrow::before{content:"";width:30px;height:1px;background:var(--lantern);opacity:.7;display:inline-block}
-
-  h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.04;letter-spacing:-.015em}
-  .h-lg{font-size:clamp(2.1rem,4.4vw,3.4rem);max-width:16ch}
-  .lead-in{margin-top:.5em}
-
-  /* scroll progress */
-  .progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform;background:var(--lantern);z-index:200;transition:transform .08s linear}
-
-  /* ---------------- NAV ---------------- */
-  .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,46px);transition:background .4s ease,padding .4s ease,border-color .4s ease;border-bottom:1px solid transparent}
-  .nav.scrolled{background:rgba(16,33,40,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px clamp(20px,5vw,46px);border-bottom:1px solid var(--moss)}
-  .nav .brand{font-family:var(--display);font-size:1.05rem;color:var(--birch);display:inline-flex;align-items:center;gap:12px}
-  .nav .brand b{color:var(--lantern);font-weight:500;font-style:italic}
-  .nav .brand-icon{width:30px;height:30px;display:block}
-.foot-brand .foot-logo{width:200px;height:auto;display:block}
-  .nav-links{display:flex;align-items:center;gap:30px}
-  .nav-links a{font-size:.84rem;letter-spacing:.04em;color:var(--sage);transition:color .25s ease}
-  .nav-links a:hover{color:var(--birch)}
-  .pill{font-family:var(--body);font-weight:600;font-size:.82rem;letter-spacing:.03em;color:#1E1F14;background:var(--lantern);padding:10px 20px;border-radius:100px;transition:transform .25s ease,background .25s ease}
-  .pill:hover{transform:translateY(-1px);background:#E6DACC}
-
-  /* ---------------- HERO ---------------- */
-  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;isolation:isolate;background:linear-gradient(to bottom,var(--night) 0%,#173845 42%,#183C48 68%,var(--spruce) 100%)}
-  .hero::before{content:"";position:absolute;left:50%;bottom:-6%;width:130%;height:62%;transform:translateX(-50%);z-index:1;pointer-events:none;background:radial-gradient(ellipse at center bottom,rgba(226,177,135,.20) 0%,rgba(169,105,73,.08) 34%,transparent 64%)}
-  .stars{position:absolute;inset:0;z-index:2;pointer-events:none;will-change:transform}
-  .star{position:absolute;background:#fff;border-radius:50%;box-shadow:0 0 4px rgba(255,255,255,.55)}
-  .star.tw{animation:twinkle 3.6s ease-in-out infinite}
-  @keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
-  .moon{position:absolute;top:13%;right:13%;width:62px;height:62px;border-radius:50%;z-index:3;background:radial-gradient(circle at 38% 36%,#F6F0E7 0%,#D5C6B7 68%,#B9A78F 100%);box-shadow:0 0 60px 16px rgba(240,233,223,.16),0 0 150px 56px rgba(226,177,135,.09);will-change:transform}
-  .ridges{position:absolute;left:0;right:0;bottom:0;width:100%;height:min(50vh,440px);z-index:4;pointer-events:none}
-  .ridges svg{width:100%;height:100%;display:block}
-  .cabin{position:absolute;left:50%;bottom:15%;transform:translateX(-50%);z-index:5;pointer-events:none}
-  .cabin .halo{position:absolute;left:50%;top:50%;width:190px;height:190px;transform:translate(-50%,-50%);border-radius:50%;filter:blur(3px);background:radial-gradient(circle,rgba(226,177,135,.5) 0%,rgba(169,105,73,.18) 38%,transparent 70%)}
-  .cabin .win{position:relative;width:15px;height:19px;border-radius:1px;background:linear-gradient(#F5CFA3,#D08A52);box-shadow:0 0 12px 3px rgba(232,190,150,.85);animation:flicker 6s ease-in-out infinite}
-  @keyframes flicker{0%,100%{opacity:1}45%{opacity:.82}70%{opacity:.94}}
-  .mist{position:absolute;left:-12%;right:-12%;bottom:13%;height:140px;z-index:5;pointer-events:none}
-  .mist span{position:absolute;height:64px;border-radius:50%;filter:blur(9px);background:linear-gradient(90deg,transparent,rgba(226,220,209,.12),transparent)}
-  .mist .m1{top:0;width:58%;left:0;animation:drift 30s linear infinite}
-  .mist .m2{top:42px;width:48%;left:0;opacity:.7;animation:drift 44s linear infinite reverse}
-  @keyframes drift{from{transform:translateX(-35%)}to{transform:translateX(135%)}}
-  .hero-inner{position:relative;z-index:10}
-  .hero h1{font-size:clamp(3.3rem,11vw,8rem);font-weight:500;letter-spacing:-.028em;margin:.2em 0 .34em;max-width:13ch}
-  .hero h1 em{font-style:italic;font-weight:400;color:var(--lantern)}
-  .hero .lede{font-size:clamp(1.08rem,2vw,1.32rem);color:#C6CDB8;max-width:42ch;font-weight:300}
-  .cta-row{display:flex;flex-wrap:wrap;gap:15px;margin-top:42px}
-  .btn{font-family:var(--body);font-weight:600;font-size:.9rem;letter-spacing:.02em;padding:15px 32px;border-radius:100px;border:1px solid transparent;cursor:pointer;transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease}
-  .btn-primary{background:var(--lantern);color:#1E1F14}
-  .btn-primary:hover{transform:translateY(-2px);background:#E6DACC}
-  .btn-ghost{border-color:var(--moss);color:var(--birch)}
-  .btn-ghost:hover{border-color:var(--lantern);color:var(--lantern)}
-  .scrollcue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:10;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);display:flex;flex-direction:column;align-items:center;gap:9px;animation:bob 2.6s ease-in-out infinite}
-  .scrollcue span{width:1px;height:32px;background:linear-gradient(var(--lantern),transparent)}
-  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
-
-  /* ---------------- ABOUT ---------------- */
-  .about{background:var(--pine)}
-  .about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:78px;align-items:center}
-  .about p{margin-top:1.5em;color:var(--sage);max-width:52ch;font-size:1.02rem}
-  .about p:first-of-type{margin-top:1.4em}
-  .stat-stack{border-top:1px solid var(--moss)}
-  .stat{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:22px 2px;border-bottom:1px solid var(--moss)}
-  .stat dt{color:var(--sage);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
-  .stat dd{font-family:var(--display);font-size:clamp(1.4rem,2.4vw,2rem);color:var(--birch)}
-  .stat dd b{color:var(--lantern);font-weight:500}
-
-  /* ---------------- THE HOUSE (amenities) ---------------- */
-  .house{background:var(--spruce)}
-  .amen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 30px;margin-top:60px}
-  .amen{display:flex;flex-direction:column;gap:12px}
-  .amen .ico{width:30px;height:30px;color:var(--lantern)}
-  .amen b{font-family:var(--display);font-weight:500;font-size:1.18rem;color:var(--birch)}
-  .amen span{color:var(--sage);font-size:.92rem}
-
-  /* ---------------- AREA (features) ---------------- */
-  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--moss);border:1px solid var(--moss);margin-top:62px}
-  .feat{background:var(--pine-card);padding:48px 44px 54px;position:relative;transition:background .3s ease}
-  .feat:hover{background:#2E6170}
-  .feat .ico{width:32px;height:32px;color:var(--lantern);margin-bottom:26px}
-  .feat h3{font-size:1.55rem;margin-bottom:.5em}
-  .feat p{color:var(--sage);font-size:.98rem;max-width:40ch}
-
-  /* ---------------- LOCATION / MAP ---------------- */
-  .location{background:var(--pine)}
-  .loc-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
-  .loc p{color:var(--sage);margin-top:1.3em;max-width:44ch}
-  .map-frame{border:1px solid var(--moss);border-radius:10px;overflow:hidden;background:#1E4551;min-height:360px;position:relative}
-  .map-frame{position:relative}
-  .map-frame iframe{width:100%;height:420px;border:0;display:block;filter:grayscale(.25) brightness(.92)}
-  .map-cover{position:absolute;inset:0;z-index:2}
-  .map-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;background:rgba(14,30,37,.82);color:var(--birch);font-family:var(--body);font-size:.82rem;font-weight:600;letter-spacing:.02em;padding:9px 16px;border-radius:100px;border:1px solid var(--moss);pointer-events:none;opacity:0;transition:opacity .25s;white-space:nowrap}
-  .map-hint.show{opacity:1}
-  @media (hover:hover) and (pointer:fine){.map-cover{display:none}.map-hint{display:none}}
-  .map-note{font-size:.78rem;color:var(--sage);margin-top:14px;letter-spacing:.02em}
-
-  /* ---------------- GALLERY ---------------- */
-  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:58px}
-  .gal-grid figure:first-child{grid-column:span 2;grid-row:span 2}
-  .ph{position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid var(--moss);background:linear-gradient(160deg,#234F5C 0%,#2C5C6A 60%,#1E4551 100%)}
-  .gal-grid figure:first-child .ph{aspect-ratio:auto;height:100%;min-height:300px}
-  .ph::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(11,26,32,.6),transparent 55%);z-index:1}
-  .ph .cap{position:absolute;left:20px;bottom:18px;z-index:2}
-  .ph .cap b{display:block;font-family:var(--display);font-weight:500;font-size:1.05rem;color:var(--birch)}
-  .ph .cap small{display:block;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);margin-top:5px;opacity:.85}
-
-  /* ---------------- INQUIRE (form) ---------------- */
-  .inquire{position:relative;overflow:hidden;background:var(--spruce)}
-  .inquire::before{content:"";position:absolute;left:50%;top:-20%;width:90%;height:140%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(226,177,135,.13),rgba(169,105,73,.04) 40%,transparent 62%);z-index:0}
-  .inq-grid{position:relative;z-index:1;display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
-  .inquire h2{font-size:clamp(2.2rem,4.6vw,3.4rem);max-width:13ch;margin-top:.4em}
-  .inquire .sub{color:var(--sage);margin-top:1.2em;max-width:38ch}
-  .inquire .direct{margin-top:1.8em;font-size:.95rem;color:var(--sage)}
-  .inquire .direct a{color:var(--lantern);border-bottom:1px solid var(--moss)}
-  .form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  .field{display:flex;flex-direction:column;gap:7px}
-  .field.full{grid-column:1 / -1}
-  .field label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
-  .field input,.field textarea,.field select{width:100%;background:var(--pine-card);border:1px solid var(--moss);color:var(--birch);padding:13px 15px;border-radius:7px;font-family:var(--body);font-size:.96rem;transition:border-color .2s ease}
-  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--lantern)}
-  .field textarea{resize:vertical;min-height:110px}
-  .field input::placeholder,.field textarea::placeholder{color:#7C99A2}
-  .form .submit{grid-column:1 / -1;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
-  .form .submit .btn-primary{cursor:pointer}
-
-  /* ---------------- FOOTER ---------------- */
-  footer{border-top:1px solid var(--moss);padding:54px 0 40px;background:var(--spruce)}
-  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:center;padding-bottom:30px;border-bottom:1px solid var(--moss)}
-  .foot-brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:1.3rem}
-  .foot-brand b{color:var(--lantern);font-weight:500;font-style:italic}
-  .foot-nav{display:flex;flex-wrap:wrap;gap:26px}
-  .foot-nav a{color:var(--sage);font-size:.88rem;transition:color .2s ease}
-  .foot-nav a:hover{color:var(--birch)}
-  .foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:26px}
-  .foot-bottom small{color:var(--sage);font-size:.82rem;letter-spacing:.03em}
-
-  /* ---------------- motion / a11y ---------------- */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
-  .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){*{animation:none!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
-  a:focus-visible,.btn:focus-visible,.pill:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--lantern);outline-offset:3px;border-radius:4px}
-
-  /* ---------------- responsive ---------------- */
-  @media (max-width:980px){
-    .amen-grid{grid-template-columns:repeat(3,1fr)}
-  }
-  @media (max-width:880px){
-    .section{padding:88px 0}
-    .nav-links{display:none}
-    .about-grid,.loc-grid,.inq-grid{grid-template-columns:1fr;gap:46px}
-    .feat-grid{grid-template-columns:1fr}
-    .amen-grid{grid-template-columns:1fr 1fr;gap:30px}
-  }
-  @media (max-width:540px){
-    .wrap{padding:0 22px}
-    .cta-row .btn{flex:1 1 auto;text-align:center}
-    .form{grid-template-columns:1fr}
-    .gal-grid{grid-template-columns:1fr 1fr;gap:10px}
-    .gal-grid figure:first-child{grid-column:span 2}
-    .moon{width:46px;height:46px;top:11%;right:10%}
-  }
-</style>
+<link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
 
+<a class="skip" href="#content">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
-  <a class="brand" href="/"><img class="brand-icon" src="assets/brand/icon-cream.svg" alt="" width="30" height="30" />The North Pine <b>Overlook</b></a>
+  <a class="brand" href="/"><img class="brand-icon" src="/assets/brand/icon-cream.svg" alt="" width="30" height="30" />The North Pine <b>Overlook</b></a>
   <div class="nav-links">
     <a href="/#house">The cabin</a>
     <a href="/#area">The area</a>
+    <div class="nav-drop">
+      <button type="button" aria-expanded="false">Explore
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-menu">
+        <a href="/hiking.html">Hiking</a>
+        <a href="/skiing.html">Skiing</a>
+        <a href="/fishing.html">Fishing</a>
+        <a href="/staunton-state-park.html">Staunton State Park</a>
+        <a href="/things-to-do.html">Things to Do</a>
+        <a href="/events.html">Events</a>
+      </div>
+    </div>
     <a href="/#gallery">Gallery</a>
+    <a href="/rates.html">Rates</a>
   </div>
   <a class="pill" href="/#inquire">Check dates</a>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -277,22 +107,21 @@
   </div>
   <div class="scrollcue" aria-hidden="true">Scroll<span></span></div>
 </header>
+
 <main id="content">
 
 <!-- ============ ABOUT ============ -->
 <section class="section about" id="about">
-  <div class="wrap about-grid">
-    <div class="reveal">
+  <div class="wrap">
+    <div class="sec-head is-center reveal">
       <span class="eyebrow">The home</span>
-      <h2 class="h-lg lead-in">About The Space</h2>
+      <h2>About The Space</h2>
     </div>
-    <div class="reveal">
-      <dl class="stat-stack">
-        <div class="stat"><dt>Location</dt><dd><b>Bailey, CO</b></dd></div>
-        <div class="stat"><dt>Sleeps</dt><dd><b>6</b></dd></div>
-        <div class="stat"><dt>Layout</dt><dd>3 bed, 2.5 bath</dd></div>
-      </dl>
-    </div>
+    <dl class="stat-row reveal">
+      <div class="stat"><dt>Location</dt><dd><b>Bailey, CO</b></dd></div>
+      <div class="stat"><dt>Sleeps</dt><dd><b>6</b></dd></div>
+      <div class="stat"><dt>Layout</dt><dd>3 bed, 2.5 bath</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -300,9 +129,9 @@
 <!-- Owner confirmed 2026-08-16 that all listed amenities are installed and available for stays; see OWNER-FACT-CHECK.md for the prior audit history and re-verify this note if amenities change. -->
 <section class="section house" id="house">
   <div class="wrap">
-    <div class="reveal">
+    <div class="sec-head reveal">
       <span class="eyebrow">Amenities</span>
-      <h2 class="h-lg lead-in">What's included with your stay.</h2>
+      <h2>What's included with your stay.</h2>
     </div>
     <div class="amen-grid reveal">
       <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zM8 8c-.5.7-.5 1.3 0 2M12 7c-.5.7-.5 1.3 0 2M16 8c-.5.7-.5 1.3 0 2"/></svg><b>Hot tub</b></div>
@@ -314,16 +143,16 @@
       <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v8H3zM7 3v8M3 14h7v7H3zM14 14h7v7h-7z"/></svg><b>Fully Stocked Kitchen</b></div>
       <div class="amen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l6-14M21 21l-6-14M9 7h6M6 21h12"/></svg><b>Garage Ski Lounge</b></div>
     </div>
-    <p class="sub reveal"><strong>Note:</strong> This property is not wheelchair accessible and requires steps to reach both the upper and lower level of the home.</p>
+    <p class="note reveal"><strong>Note:</strong> This property is not wheelchair accessible and requires steps to reach both the upper and lower level of the home.</p>
   </div>
 </section>
 
 <!-- ============ AREA ============ -->
 <section class="section area" id="area">
   <div class="wrap">
-    <div class="reveal">
+    <div class="sec-head reveal">
       <span class="eyebrow">Bailey-area trip planning</span>
-      <h2 class="h-lg lead-in">Outdoor places to research.</h2>
+      <h2>Outdoor places to research.</h2>
     </div>
     <div class="feat-grid reveal">
       <article class="feat">
@@ -347,14 +176,60 @@
         <p>Night-sky visibility depends on clouds, smoke, moonlight, and local light conditions. Check the forecast and current conditions before planning to stargaze.</p>
       </article>
     </div>
+
+    <div class="sec-head reveal" style="margin-top:var(--s-6)">
+      <span class="eyebrow">Guides</span>
+      <h2>Plan it in detail.</h2>
+    </div>
+    <div class="explore-grid reveal">
+      <a class="xcard" href="/hiking.html">
+        <span class="k">On foot</span>
+        <h3>Hiking</h3>
+        <p>Ten trails within about an hour, with trailhead addresses, drive times, and hours.</p>
+        <span class="go">View trails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard" href="/skiing.html">
+        <span class="k">On snow</span>
+        <h3>Skiing</h3>
+        <p>Eight ski areas in range, from a quick evening run to a full resort day.</p>
+        <span class="go">View ski areas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard" href="/fishing.html">
+        <span class="k">On the water</span>
+        <h3>Fishing</h3>
+        <p>Access notes for public water, stocked ponds, and private fishing options.</p>
+        <span class="go">View water <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard" href="/staunton-state-park.html">
+        <span class="k">Nearby park</span>
+        <h3>Staunton State Park</h3>
+        <p>A full planning guide to the park just up the road from the cabin.</p>
+        <span class="go">Read the guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard" href="/things-to-do.html">
+        <span class="k">The area</span>
+        <h3>Things to Do</h3>
+        <p>Scenic drives, small-town stops, and the local color of Platte Canyon.</p>
+        <span class="go">See ideas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard" href="/events.html">
+        <span class="k">While you visit</span>
+        <h3>Events</h3>
+        <p>Festivals, seasonal happenings, and dates worth planning a trip around.</p>
+        <span class="go">See what's on <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- ============ LOCATION / MAP ============ -->
 <section class="section location" id="location">
   <div class="wrap loc-grid">
-    <div class="reveal">
-      <span class="eyebrow">Getting here</span>
+    <div class="loc reveal">
+      <div class="sec-head">
+        <span class="eyebrow">Getting here</span>
+        <h2>Bailey, Colorado.</h2>
+      </div>
       <p>Bailey sits southwest of Denver along the US-285 corridor through Platte Canyon. Travel time varies with the starting point, traffic, construction, weather, and season.</p>
       <p class="map-note">Exact property location is shared two days prior to check-in.</p>
     </div>
@@ -371,12 +246,14 @@
 <!-- ============ GALLERY ============ -->
 <section class="section gallery" id="gallery">
   <div class="wrap">
-    <div class="reveal">
+    <div class="sec-head is-center reveal">
       <span class="eyebrow">Take a look around</span>
-      <h2 class="h-lg lead-in">Experience the Space.</h2>
+      <h2>Experience the Space.</h2>
     </div>
-    <div class="gal-grid reveal">
-      <figure><div class="ph"><div class="cap"><b>Full gallery coming soon</b><small>Original, owner-approved guest photos are being added.</small></div></div></figure>
+    <div class="gal-placeholder reveal">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 16l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="9.5" r="1.4"/></svg>
+      <b>Full gallery coming soon</b>
+      <small>Original, owner-approved guest photos are being added.</small>
     </div>
   </div>
 </section>
@@ -385,8 +262,10 @@
 <section class="section inquire" id="inquire">
   <div class="wrap inq-grid">
     <div class="reveal">
-      <span class="eyebrow">Book your stay</span>
-      <h2>Love what you see? Stay with us!</h2>
+      <div class="sec-head">
+        <span class="eyebrow">Book your stay</span>
+        <h2>Love what you see? Stay with us!</h2>
+      </div>
       <p class="direct">To book a stay at The North Pine Overlook, please fill out an inquiry form and we will get back to you within 24 hours. You may also contact us at <a href="mailto:honkytonkiesproperties@gmail.com?subject=Direct%20booking%20inquiry%20-%20The%20North%20Pine%20Overlook">honkytonkiesproperties@gmail.com</a></p>
     </div>
 
@@ -406,160 +285,48 @@
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
 </main>
+
+<!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a href="#top" aria-label="The North Pine Overlook home"><img class="foot-logo" src="assets/brand/logo-main-cream.svg" alt="The North Pine Overlook" width="200" height="138" /></a>
+        <a href="#top" aria-label="The North Pine Overlook home"><img class="foot-logo" src="/assets/brand/logo-main-cream.svg" alt="The North Pine Overlook" width="190" height="131" /></a>
+        <p>A mountain cabin above Bailey, Colorado. Sleeps 6, three bedrooms and 2.5 baths.</p>
       </div>
-      <nav class="foot-nav">
-        <a href="/">Home</a>
-        <a href="/#house">The cabin</a>
-        <a href="/#area">The area</a>
-            <a href="/#gallery">Gallery</a>
-        <a href="/staunton-state-park.html">Staunton State Park</a>
-        <a href="/things-to-do.html">Things to Do</a>
-        <a href="/hiking.html">Hiking</a>
-        <a href="/skiing.html">Skiing</a>
-        <a href="/fishing.html">Fishing</a>
-        <a href="/south-platte-fly-fishing-trips.html">South Platte Trips</a>
-        <a href="/events.html">Events</a>
-        <a href="/rates.html">Rates &amp; Availability</a>
-        <a href="/directions.html">Directions</a>
-        <a href="/what-to-bring.html">What to Bring</a>
-      </nav>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>The cabin</h4>
+          <a href="/">Home</a>
+          <a href="/#house">Amenities</a>
+          <a href="/#gallery">Gallery</a>
+          <a href="/rates.html">Rates &amp; Availability</a>
+        </div>
+        <div class="foot-col">
+          <h4>The area</h4>
+          <a href="/hiking.html">Hiking</a>
+          <a href="/skiing.html">Skiing</a>
+          <a href="/fishing.html">Fishing</a>
+          <a href="/south-platte-fly-fishing-trips.html">South Platte Trips</a>
+          <a href="/staunton-state-park.html">Staunton State Park</a>
+        </div>
+        <div class="foot-col">
+          <h4>Plan your trip</h4>
+          <a href="/things-to-do.html">Things to Do</a>
+          <a href="/events.html">Events</a>
+          <a href="/directions.html">Directions</a>
+          <a href="/what-to-bring.html">What to Bring</a>
+        </div>
+      </div>
     </div>
     <div class="foot-bottom">
-      <small>© 2026 The North Pine Overlook · Bailey, Colorado</small>
+      <small>&copy; 2026 The North Pine Overlook &middot; Bailey, Colorado</small>
       <small>Made among the pines</small>
     </div>
   </div>
 </footer>
 
-<script>
-  var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // starfield
-  (function(){
-    var sky = document.getElementById('stars');
-    if(!sky) return;
-    var n = window.innerWidth < 600 ? 48 : 88;
-    var frag = document.createDocumentFragment();
-    for(var i=0;i<n;i++){
-      var s = document.createElement('span'); s.className='star';
-      var size = (Math.random()*1.8+1).toFixed(2);
-      s.style.width=size+'px'; s.style.height=size+'px';
-      s.style.left=(Math.random()*100).toFixed(2)+'%';
-      s.style.top=(Math.random()*64).toFixed(2)+'%';
-      s.style.opacity=(Math.random()*0.5+0.3).toFixed(2);
-      if(!REDUCE && Math.random()<0.5){ s.classList.add('tw'); s.style.animationDelay=(Math.random()*4).toFixed(2)+'s'; }
-      frag.appendChild(s);
-    }
-    sky.appendChild(frag);
-  })();
-
-  // nav background + scroll progress + gentle hero parallax
-  (function(){
-    var nav = document.querySelector('.nav');
-    var bar = document.getElementById('progress');
-    var stars = document.getElementById('stars');
-    var moon = document.getElementById('moon');
-    var ticking = false;
-    // cache geometry so the scroll handler never forces a reflow
-    var winH = 0, scrollable = 0;
-    function measure(){
-      winH = window.innerHeight;
-      scrollable = document.documentElement.scrollHeight - winH;
-    }
-    measure();
-    window.addEventListener('resize', function(){
-      if(!ticking){ window.requestAnimationFrame(function(){ measure(); update(); }); ticking = true; }
-    }, {passive:true});
-    window.addEventListener('load', measure);
-    function update(){
-      var y = window.scrollY || window.pageYOffset;
-      if(nav) nav.classList.toggle('scrolled', y > 40);
-      if(bar){
-        bar.style.transform = 'scaleX(' + (scrollable > 0 ? Math.min(y / scrollable, 1) : 0) + ')';
-      }
-      if(!REDUCE && y < winH){
-        if(stars) stars.style.transform = 'translateY(' + (y * 0.28) + 'px)';
-        if(moon)  moon.style.transform  = 'translateY(' + (y * 0.18) + 'px)';
-      }
-      ticking = false;
-    }
-    update();
-    window.addEventListener('scroll', function(){
-      if(!ticking){ window.requestAnimationFrame(update); ticking = true; }
-    }, {passive:true});
-  })();
-
-  // reveal on scroll
-  (function(){
-    var items = document.querySelectorAll('.reveal');
-    if(REDUCE || !('IntersectionObserver' in window)){
-      items.forEach(function(el){ el.classList.add('in'); }); return;
-    }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-    items.forEach(function(el){ io.observe(el); });
-  })();
-
-  // inquiry form -> opens a pre-filled email (no backend needed)
-  function sendInquiry(){
-    var v = function(id){ var el = document.getElementById(id); return el ? (el.value||'').trim() : ''; };
-    var name = v('f-name'), email = v('f-email');
-    if(!name || !email){
-      alert('Please add your name and email so we can write back.');
-      return;
-    }
-    var body = [
-      'Name: ' + name,
-      'Email: ' + email,
-      'Arrive: ' + (v('f-arrive') || '(not set)'),
-      'Depart: ' + (v('f-depart') || '(not set)'),
-      'Guests: ' + (v('f-guests') || '(not set)'),
-      '',
-      v('f-msg')
-    ].join('\n');
-    window.location.href = 'mailto:honkytonkiesproperties@gmail.com'
-      + '?subject=' + encodeURIComponent('Direct booking inquiry - The North Pine Overlook')
-      + '&body=' + encodeURIComponent(body);
-  }
-</script>
-
-<script>
-  // Map: one finger scrolls the page, two fingers pan the map (tap-friendly on desktop)
-  (function(){
-    var frame = document.querySelector('.map-frame');
-    if(!frame) return;
-    var cover = frame.querySelector('.map-cover');
-    var hint = frame.querySelector('.map-hint');
-    if(!cover) return;
-    var t;
-    function flash(){
-      if(!hint) return;
-      hint.classList.add('show');
-      clearTimeout(t);
-      t = setTimeout(function(){ hint.classList.remove('show'); }, 1600);
-    }
-    function reset(){ cover.style.pointerEvents = ''; }
-    cover.addEventListener('touchstart', function(e){
-      if(e.touches.length >= 2){
-        cover.style.pointerEvents = 'none';   // let two fingers reach the map
-        if(hint) hint.classList.remove('show');
-      } else {
-        flash();                              // one finger: keep the page scrolling, nudge the user
-      }
-    }, {passive:true});
-    cover.addEventListener('touchend', reset);
-    cover.addEventListener('touchcancel', reset);
-    document.addEventListener('touchend', function(e){ if(e.touches.length === 0) reset(); }, {passive:true});
-  })();
-</script>
-
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
