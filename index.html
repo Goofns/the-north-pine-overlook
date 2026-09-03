@@ -253,10 +253,137 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
       <span class="eyebrow">Take a look around</span>
       <h2>Experience the Space.</h2>
     </div>
-    <div class="gal-placeholder reveal">
-      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 16l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="9.5" r="1.4"/></svg>
-      <b>Full gallery coming soon</b>
-      <small>Original, owner-approved guest photos are being added.</small>
+    <div class="gal-grid" id="gal-grid">
+    <button class="gal-item" type="button" data-full="/assets/gallery/01-twilight-exterior.jpg" data-caption="The cabin at twilight, string lights along both decks and the hot tub and barrel sauna lit on the lower pad">
+    <img src="/assets/gallery/thumb/01-twilight-exterior.jpg" alt="The cabin at twilight, string lights along both decks and the hot tub and barrel sauna lit on the lower pad" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/02-deck-fire-table.jpg" data-caption="The upper deck, with the propane fire table, lounge seating and the valley beyond">
+    <img src="/assets/gallery/thumb/02-deck-fire-table.jpg" alt="The upper deck, with the propane fire table, lounge seating and the valley beyond" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/03-twilight-stargazing-net.jpg" data-caption="The cabin at dusk from below, with the stargazing net strung beneath the deck">
+    <img src="/assets/gallery/thumb/03-twilight-stargazing-net.jpg" alt="The cabin at dusk from below, with the stargazing net strung beneath the deck" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/04-deck-valley-view.jpg" data-caption="Deck seating around the lit fire table, looking out over the valley">
+    <img src="/assets/gallery/thumb/04-deck-valley-view.jpg" alt="Deck seating around the lit fire table, looking out over the valley" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/05-kitchen-fireplace.jpg" data-caption="The kitchen, with island seating and a stone fireplace">
+    <img src="/assets/gallery/thumb/05-kitchen-fireplace.jpg" alt="The kitchen, with island seating and a stone fireplace" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/06-dining-for-eight.jpg" data-caption="The dining table set for eight beside the view windows, deck door open">
+    <img src="/assets/gallery/thumb/06-dining-for-eight.jpg" alt="The dining table set for eight beside the view windows, deck door open" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/07-lounge-neon-sign.jpg" data-caption="The lounge, with its neon Explore Chill Repeat sign and mountain mural">
+    <img src="/assets/gallery/thumb/07-lounge-neon-sign.jpg" alt="The lounge, with its neon Explore Chill Repeat sign and mountain mural" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/08-living-room-wood-stove.jpg" data-caption="The living room, with a green sectional, lit wood stove and stone hearth">
+    <img src="/assets/gallery/thumb/08-living-room-wood-stove.jpg" alt="The living room, with a green sectional, lit wood stove and stone hearth" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/09-kitchen-wide.jpg" data-caption="The kitchen opening onto the dining area and the view windows">
+    <img src="/assets/gallery/thumb/09-kitchen-wide.jpg" alt="The kitchen opening onto the dining area and the view windows" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/10-theater-lounge.jpg" data-caption="The theater lounge, with a sectional, wood stove and popcorn machine">
+    <img src="/assets/gallery/thumb/10-theater-lounge.jpg" alt="The theater lounge, with a sectional, wood stove and popcorn machine" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/11-deck-grill.jpg" data-caption="The upper deck, with a gas grill, fire table and seating under open sky">
+    <img src="/assets/gallery/thumb/11-deck-grill.jpg" alt="The upper deck, with a gas grill, fire table and seating under open sky" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/12-hot-tub-and-sauna.jpg" data-caption="The hot tub and barrel sauna against the stone and timber wall">
+    <img src="/assets/gallery/thumb/12-hot-tub-and-sauna.jpg" alt="The hot tub and barrel sauna against the stone and timber wall" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/13-lounge-logo-wall.jpg" data-caption="The lounge, with the North Pine Overlook logo wall and a chesterfield sofa" hidden>
+    <img src="/assets/gallery/thumb/13-lounge-logo-wall.jpg" alt="The lounge, with the North Pine Overlook logo wall and a chesterfield sofa" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/14-aerial-twilight.jpg" data-caption="The cabin from above at twilight, both decks lit" hidden>
+    <img src="/assets/gallery/thumb/14-aerial-twilight.jpg" alt="The cabin from above at twilight, both decks lit" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/15-climbing-wall.jpg" data-caption="The rock climbing wall on the garage wall, with the EV charger alongside" hidden>
+    <img src="/assets/gallery/thumb/15-climbing-wall.jpg" alt="The rock climbing wall on the garage wall, with the EV charger alongside" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/16-bedroom-king.jpg" data-caption="A king bedroom with an upholstered headboard and an ensuite bathroom" hidden>
+    <img src="/assets/gallery/thumb/16-bedroom-king.jpg" alt="A king bedroom with an upholstered headboard and an ensuite bathroom" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/17-bathroom-main.jpg" data-caption="The main bathroom, with a glass shower and double vanity" hidden>
+    <img src="/assets/gallery/thumb/17-bathroom-main.jpg" alt="The main bathroom, with a glass shower and double vanity" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/18-lounge-egg-chairs.jpg" data-caption="The lounge from the doorway, with hanging egg chairs and the mural wall" hidden>
+    <img src="/assets/gallery/thumb/18-lounge-egg-chairs.jpg" alt="The lounge from the doorway, with hanging egg chairs and the mural wall" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/19-lounge-mural-sofa.jpg" data-caption="The mural wall, leather sofa and ottomans in the lounge" hidden>
+    <img src="/assets/gallery/thumb/19-lounge-mural-sofa.jpg" alt="The mural wall, leather sofa and ottomans in the lounge" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/20-sauna-exterior.jpg" data-caption="The barrel sauna outside, with the hillside behind it" hidden>
+    <img src="/assets/gallery/thumb/20-sauna-exterior.jpg" alt="The barrel sauna outside, with the hillside behind it" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/21-aerial-valley.jpg" data-caption="Aerial view over the valley toward the mountains" hidden>
+    <img src="/assets/gallery/thumb/21-aerial-valley.jpg" alt="Aerial view over the valley toward the mountains" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/22-lounge-table.jpg" data-caption="The lounge table and mural wall" hidden>
+    <img src="/assets/gallery/thumb/22-lounge-table.jpg" alt="The lounge table and mural wall" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/23-bedroom-blue.jpg" data-caption="A bedroom with a blue bed frame and wall-mounted television" hidden>
+    <img src="/assets/gallery/thumb/23-bedroom-blue.jpg" alt="A bedroom with a blue bed frame and wall-mounted television" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/24-bedroom-green.jpg" data-caption="A bedroom with green walls, wood panelling and a queen bed" hidden>
+    <img src="/assets/gallery/thumb/24-bedroom-green.jpg" alt="A bedroom with green walls, wood panelling and a queen bed" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/25-sauna-interior.jpg" data-caption="Inside the cedar barrel sauna" hidden>
+    <img src="/assets/gallery/thumb/25-sauna-interior.jpg" alt="Inside the cedar barrel sauna" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/26-covered-deck.jpg" data-caption="The covered deck, with stonework and an adirondack chair" hidden>
+    <img src="/assets/gallery/thumb/26-covered-deck.jpg" alt="The covered deck, with stonework and an adirondack chair" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/27-coffee-bar.jpg" data-caption="The coffee bar, with mugs on open shelves" hidden>
+    <img src="/assets/gallery/thumb/27-coffee-bar.jpg" alt="The coffee bar, with mugs on open shelves" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/28-bedroom-reading-chair.jpg" data-caption="A bedroom with green walls, a bed and a reading chair" hidden>
+    <img src="/assets/gallery/thumb/28-bedroom-reading-chair.jpg" alt="A bedroom with green walls, a bed and a reading chair" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/29-bedroom-panelling.jpg" data-caption="A bedroom with wood panelling and a wall-mounted television" hidden>
+    <img src="/assets/gallery/thumb/29-bedroom-panelling.jpg" alt="A bedroom with wood panelling and a wall-mounted television" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/30-sauna-hot-tub-daytime.jpg" data-caption="The barrel sauna and hot tub on the lower pad" hidden>
+    <img src="/assets/gallery/thumb/30-sauna-hot-tub-daytime.jpg" alt="The barrel sauna and hot tub on the lower pad" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/31-bike-station.jpg" data-caption="The bike maintenance station, with wall hooks" hidden>
+    <img src="/assets/gallery/thumb/31-bike-station.jpg" alt="The bike maintenance station, with wall hooks" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/32-breakfast-table.jpg" data-caption="Breakfast laid on the dining table beside the view windows" hidden>
+    <img src="/assets/gallery/thumb/32-breakfast-table.jpg" alt="Breakfast laid on the dining table beside the view windows" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/33-bedroom-bean-bag.jpg" data-caption="A bedroom with a bean bag chair and television" hidden>
+    <img src="/assets/gallery/thumb/33-bedroom-bean-bag.jpg" alt="A bedroom with a bean bag chair and television" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/34-branded-mug.jpg" data-caption="A North Pine Overlook mug on the coffee machine" hidden>
+    <img src="/assets/gallery/thumb/34-branded-mug.jpg" alt="A North Pine Overlook mug on the coffee machine" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/35-theater-lounge-alt.jpg" data-caption="The theater lounge from the other side of the room" hidden>
+    <img src="/assets/gallery/thumb/35-theater-lounge-alt.jpg" alt="The theater lounge from the other side of the room" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/36-garage-gym.jpg" data-caption="The garage gym, with a weight bench, dumbbells and workbench" hidden>
+    <img src="/assets/gallery/thumb/36-garage-gym.jpg" alt="The garage gym, with a weight bench, dumbbells and workbench" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/37-ski-storage.jpg" data-caption="Ski storage on the garage wall beside the workbench" hidden>
+    <img src="/assets/gallery/thumb/37-ski-storage.jpg" alt="Ski storage on the garage wall beside the workbench" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/38-coffee-bar-wide.jpg" data-caption="The coffee bar from further back" hidden>
+    <img src="/assets/gallery/thumb/38-coffee-bar-wide.jpg" alt="The coffee bar from further back" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/39-bathroom-second.jpg" data-caption="The second bathroom, with vanity and shower" hidden>
+    <img src="/assets/gallery/thumb/39-bathroom-second.jpg" alt="The second bathroom, with vanity and shower" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/40-ev-charger.jpg" data-caption="The EV charger mounted beside the garage door" hidden>
+    <img src="/assets/gallery/thumb/40-ev-charger.jpg" alt="The EV charger mounted beside the garage door" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/41-coffee-pods.jpg" data-caption="Coffee pods on the rack beside the machine" hidden>
+    <img src="/assets/gallery/thumb/41-coffee-pods.jpg" alt="Coffee pods on the rack beside the machine" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    <button class="gal-item" type="button" data-full="/assets/gallery/42-mudroom.jpg" data-caption="Mudroom shelving and hanging space" hidden>
+    <img src="/assets/gallery/thumb/42-mudroom.jpg" alt="Mudroom shelving and hanging space" width="640" height="480" loading="lazy" decoding="async" />
+    </button>
+    </div>
+    <div class="gal-more">
+      <button class="btn btn-ghost" type="button" id="gal-toggle" aria-expanded="false" aria-controls="gal-grid">Show all 42 photos</button>
+      <span class="gal-count" id="gal-count">Showing 12 of 42</span>
     </div>
   </div>
 </section>
@@ -330,6 +457,16 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
   </div>
 </footer>
 
+
+<div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <button class="lbox-btn lbox-close" type="button" id="lbox-close" aria-label="Close">&#215;</button>
+  <button class="lbox-btn lbox-prev" type="button" id="lbox-prev" aria-label="Previous photo">&#8249;</button>
+  <figure>
+    <img id="lbox-img" src="" alt="" />
+    <figcaption id="lbox-cap"></figcaption>
+  </figure>
+  <button class="lbox-btn lbox-next" type="button" id="lbox-next" aria-label="Next photo">&#8250;</button>
+</div>
 <script src="/assets/site.js" defer></script>
 </body>
 </html>
