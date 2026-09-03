@@ -276,21 +276,54 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;line-height:1.08;letter-s
   grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
 }
 .gal-item{
-  position:relative;display:block;padding:0;border:0;cursor:zoom-in;
+  position:relative;display:block;padding:0;border:0;
   background:var(--spruce);border-radius:var(--radius-sm);overflow:hidden;
-  aspect-ratio:4/3;
+  aspect-ratio:4/3;cursor:zoom-in;
   transition:transform .25s var(--ease),box-shadow .25s var(--ease);
 }
-.gal-item:first-child{grid-column:span 2;grid-row:span 2}
-@media (max-width:560px){.gal-item:first-child{grid-column:span 1;grid-row:span 1}}
-.gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+.gal-hero{grid-column:span 2;grid-row:span 2}
+@media (max-width:560px){.gal-hero{grid-column:span 1;grid-row:span 1}}
 .gal-item:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.34)}
-.gal-item:hover img{transform:scale(1.045)}
-.gal-item:focus-visible{outline:2px solid var(--lantern);outline-offset:3px}
-.gal-item[hidden]{display:none}
+.gal-item:focus-visible,.gal-open:focus-visible{outline:2px solid var(--lantern);outline-offset:3px}
+.gal-item img{width:100%;height:100%;object-fit:cover;display:block}
 
-.gal-more{margin-top:var(--s-4);text-align:center}
-.gal-count{display:block;font-size:.82rem;color:var(--sage);margin-top:var(--s-2);letter-spacing:.02em}
+/* stacked slides */
+.gal-slides{position:absolute;inset:0}
+.gal-slide{position:absolute;inset:0;opacity:0;transition:opacity .55s var(--ease)}
+.gal-slide.is-active{opacity:1}
+
+/* the click target that opens the lightbox */
+.gal-open{position:absolute;inset:0;background:none;border:0;padding:0;cursor:zoom-in}
+
+/* label + count */
+.gal-label{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;pointer-events:none;
+  padding:44px var(--s-3) var(--s-2);
+  background:linear-gradient(to top,rgba(10,20,24,.82),rgba(10,20,24,0));
+  display:flex;flex-direction:column;gap:2px;
+}
+.gal-label b{font-family:var(--display);font-weight:500;font-size:1.02rem;color:var(--birch);letter-spacing:.01em}
+.gal-label small{font-size:.72rem;color:var(--sage);letter-spacing:.06em;text-transform:uppercase}
+.gal-hero .gal-label b{font-size:1.35rem}
+.gal-count-badge{
+  position:absolute;top:var(--s-2);right:var(--s-2);z-index:2;pointer-events:none;
+  background:rgba(10,20,24,.66);color:var(--cream);border-radius:20px;
+  padding:3px 9px;font-size:.72rem;letter-spacing:.04em;
+}
+
+/* per-tile slideshow arrows */
+.gal-nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:34px;height:34px;border-radius:50%;cursor:pointer;
+  background:rgba(10,20,24,.55);border:1px solid rgba(213,198,183,.28);
+  color:var(--birch);font-size:1.05rem;line-height:1;
+  display:grid;place-items:center;opacity:0;transition:opacity .2s var(--ease),background .2s var(--ease);
+}
+.gal-item:hover .gal-nav,.gal-nav:focus-visible{opacity:1}
+.gal-nav:hover{background:var(--pine-card)}
+.gal-nav-prev{left:8px}
+.gal-nav-next{right:8px}
+@media (hover:none){.gal-nav{opacity:1}}
 
 .lbox{
   position:fixed;inset:0;z-index:120;display:none;
@@ -301,6 +334,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;line-height:1.08;letter-s
 .lbox figure{margin:0;max-width:min(1200px,94vw);max-height:92vh;display:flex;flex-direction:column;gap:var(--s-2)}
 .lbox img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:var(--radius-sm);display:block;margin:0 auto}
 .lbox figcaption{color:var(--cream);font-size:.86rem;text-align:center;letter-spacing:.01em;padding:0 var(--s-3)}
+.lbox figcaption b{display:block;color:var(--birch);font-family:var(--display);font-weight:500;font-size:1.02rem;margin-bottom:.25em}
 .lbox-btn{
   position:absolute;background:rgba(19,36,43,.72);border:1px solid var(--moss);
   color:var(--birch);width:46px;height:46px;border-radius:50%;cursor:pointer;
@@ -317,9 +351,9 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;line-height:1.08;letter-s
   .lbox-prev{left:8px}.lbox-next{right:8px}
 }
 @media (prefers-reduced-motion:reduce){
-  .gal-item,.gal-item img{transition:none}
+  .gal-item,.gal-slide{transition:none}
   .gal-item:hover{transform:none}
-  .gal-item:hover img{transform:none}
+}
 }
 
 /* ---------------- article + list pages ---------------- */
