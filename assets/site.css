@@ -271,6 +271,8 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;line-height:1.08;letter-s
 
 /* ---------------- gallery ---------------- */
 .gallery{background:var(--pine)}
+.gal-more{margin-top:var(--s-4);text-align:center}
+.gal-item[hidden]{display:none!important}
 .gal-grid{
   margin-top:var(--s-5);display:grid;gap:var(--s-2);
   grid-template-columns:repeat(auto-fill,minmax(240px,1fr));

@@ -196,6 +196,7 @@
       var solo = el.querySelector('img');
       photos.push({ thumb: solo.getAttribute('src'), alt: solo.getAttribute('alt') });
     }
+    if (el.hidden) el.dataset.optional = '1';
     tiles.push({
       el: el,
       name: label ? label.textContent : '',
@@ -223,7 +224,7 @@
   }
 
   function autoplay(t) {
-    if (reduce || t.photos.length < 2) return;
+    if (reduce || t.photos.length < 2 || t.el.hidden) return;
     stop(t);
     t.timer = setInterval(function () { step(t, 1); }, 4200 + Math.random() * 1200);
   }
@@ -243,6 +244,22 @@
 
     autoplay(t);
   });
+
+  /* ---- show more / show fewer ---- */
+  var toggle = document.getElementById('gal-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      tiles.forEach(function (t) {
+        if (!t.el.dataset.optional) return;
+        t.el.hidden = expanded;
+        if (expanded) { stop(t); } else { autoplay(t); }
+      });
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.textContent = expanded ? 'Show more' : 'Show fewer';
+      if (expanded) grid.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    });
+  }
 
   /* ---- lightbox, scoped to one room ---- */
   var cur = null;
