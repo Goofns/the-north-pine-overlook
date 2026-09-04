@@ -49,7 +49,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
-<link rel="stylesheet" href="/assets/site.css?v=202609031216" />
+<link rel="stylesheet" href="/assets/site.css?v=202609040439" />
 <script>/* progressive enhancement flag: only hide .reveal content if JS is alive */
 if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.className+=" js";}</script>
 
@@ -254,13 +254,21 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
       <h2>Experience the Space.</h2>
     </div>
     <div class="gal-grid" id="gal-grid">
-<button class="gal-item gal-hero" type="button" data-room="hero" data-index="0">
-<img src="/assets/gallery/thumb/01-twilight-exterior.jpg" alt="The cabin at twilight, string lights along both decks and the hot tub and barrel sauna lit on the lower pad" width="640" height="480" decoding="async" />
-<span class="gal-label"><b>The Cabin</b></span>
-</button>
+<div class="gal-item gal-room gal-hero" data-room="cabin">
+<div class="gal-slides">
+<img class="gal-slide is-active" src="/assets/gallery/thumb/01-twilight-exterior.jpg" alt="The cabin at twilight, string lights along both decks and the hot tub and barrel sauna lit on the lower pad" width="640" height="480" decoding="async" />
+<img class="gal-slide" src="/assets/gallery/thumb/14-aerial-twilight.jpg" alt="The cabin from above at twilight, both decks lit" width="640" height="480" decoding="async" loading="lazy" />
+<img class="gal-slide" src="/assets/gallery/thumb/03-twilight-stargazing-net.jpg" alt="The cabin at dusk from below, with the stargazing net strung beneath the deck" width="640" height="480" decoding="async" loading="lazy" />
+</div>
+<button class="gal-nav gal-nav-prev" type="button" aria-label="Previous photo of The Cabin">&#8249;</button>
+<button class="gal-nav gal-nav-next" type="button" aria-label="Next photo of The Cabin">&#8250;</button>
+<span class="gal-label"><b>The Cabin</b><small>3 photos</small></span>
+<span class="gal-count-badge">1/3</span>
+<button class="gal-open" type="button" aria-label="Open The Cabin photos"></button>
+</div>
 <div class="gal-item gal-room" data-room="deck">
 <div class="gal-slides">
-<img class="gal-slide is-active" src="/assets/gallery/thumb/02-deck-fire-table.jpg" alt="The upper deck, with the propane fire table, lounge seating and the valley beyond" width="640" height="480" decoding="async" />
+<img class="gal-slide is-active" src="/assets/gallery/thumb/02-deck-fire-table.jpg" alt="The upper deck, with the propane fire table, lounge seating and the valley beyond" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/04-deck-valley-view.jpg" alt="Deck seating around the lit fire table, looking out over the valley" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/11-deck-grill.jpg" alt="The upper deck, with a gas grill, fire table and seating under open sky" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/26-covered-deck.jpg" alt="The covered deck, with stonework and an adirondack chair" width="640" height="480" decoding="async" loading="lazy" />
@@ -273,7 +281,7 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 </div>
 <div class="gal-item gal-room" data-room="kitchen">
 <div class="gal-slides">
-<img class="gal-slide is-active" src="/assets/gallery/thumb/05-kitchen-fireplace.jpg" alt="The kitchen, with island seating and a stone fireplace" width="640" height="480" decoding="async" />
+<img class="gal-slide is-active" src="/assets/gallery/thumb/05-kitchen-fireplace.jpg" alt="The kitchen, with island seating and a stone fireplace" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/09-kitchen-wide.jpg" alt="The kitchen opening onto the dining area and the view windows" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/06-dining-for-eight.jpg" alt="The dining table set for eight beside the view windows, deck door open" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/32-breakfast-table.jpg" alt="Breakfast laid on the dining table beside the view windows" width="640" height="480" decoding="async" loading="lazy" />
@@ -290,7 +298,7 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 </div>
 <div class="gal-item gal-room" data-room="living">
 <div class="gal-slides">
-<img class="gal-slide is-active" src="/assets/gallery/thumb/08-living-room-wood-stove.jpg" alt="The living room, with a green sectional, lit wood stove and stone hearth" width="640" height="480" decoding="async" />
+<img class="gal-slide is-active" src="/assets/gallery/thumb/08-living-room-wood-stove.jpg" alt="The living room, with a green sectional, lit wood stove and stone hearth" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/10-theater-lounge.jpg" alt="The theater lounge, with a sectional, wood stove and popcorn machine" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/35-theater-lounge-alt.jpg" alt="The living room from the other side of the room" width="640" height="480" decoding="async" loading="lazy" />
 </div>
@@ -302,7 +310,7 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 </div>
 <div class="gal-item gal-room" data-room="garage">
 <div class="gal-slides">
-<img class="gal-slide is-active" src="/assets/gallery/thumb/07-lounge-neon-sign.jpg" alt="The garage lounge, with its neon Explore Chill Repeat sign and mountain mural" width="640" height="480" decoding="async" />
+<img class="gal-slide is-active" src="/assets/gallery/thumb/07-lounge-neon-sign.jpg" alt="The garage lounge, with its neon Explore Chill Repeat sign and mountain mural" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/13-lounge-logo-wall.jpg" alt="The lounge, with the North Pine Overlook logo wall and a chesterfield sofa" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/19-lounge-mural-sofa.jpg" alt="The mural wall, leather sofa and ottomans in the lounge" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/18-lounge-egg-chairs.jpg" alt="The lounge from the doorway, with hanging egg chairs and the mural wall" width="640" height="480" decoding="async" loading="lazy" />
@@ -319,9 +327,9 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 <span class="gal-count-badge">1/10</span>
 <button class="gal-open" type="button" aria-label="Open The Garage photos"></button>
 </div>
-<div class="gal-item gal-room" data-room="sauna">
+<div class="gal-item gal-room" data-room="sauna" hidden>
 <div class="gal-slides">
-<img class="gal-slide is-active" src="/assets/gallery/thumb/12-hot-tub-and-sauna.jpg" alt="The hot tub and barrel sauna against the stone and timber wall" width="640" height="480" decoding="async" />
+<img class="gal-slide is-active" src="/assets/gallery/thumb/12-hot-tub-and-sauna.jpg" alt="The hot tub and barrel sauna against the stone and timber wall" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/20-sauna-exterior.jpg" alt="The barrel sauna outside, with the hillside behind it" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/30-sauna-hot-tub-daytime.jpg" alt="The barrel sauna and hot tub on the lower pad" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/25-sauna-interior.jpg" alt="Inside the cedar barrel sauna" width="640" height="480" decoding="async" loading="lazy" />
@@ -332,9 +340,9 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 <span class="gal-count-badge">1/4</span>
 <button class="gal-open" type="button" aria-label="Open Sauna &amp; Hot Tub photos"></button>
 </div>
-<div class="gal-item gal-room" data-room="bedrooms">
+<div class="gal-item gal-room" data-room="bedrooms" hidden>
 <div class="gal-slides">
-<img class="gal-slide is-active" src="/assets/gallery/thumb/16-bedroom-king.jpg" alt="A king bedroom with an upholstered headboard and an ensuite bathroom" width="640" height="480" decoding="async" />
+<img class="gal-slide is-active" src="/assets/gallery/thumb/16-bedroom-king.jpg" alt="A king bedroom with an upholstered headboard and an ensuite bathroom" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/23-bedroom-blue.jpg" alt="A bedroom with a blue bed frame and wall-mounted television" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/24-bedroom-green.jpg" alt="A bedroom with green walls, wood panelling and a queen bed" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/28-bedroom-reading-chair.jpg" alt="A bedroom with green walls, a bed and a reading chair" width="640" height="480" decoding="async" loading="lazy" />
@@ -347,21 +355,9 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 <span class="gal-count-badge">1/6</span>
 <button class="gal-open" type="button" aria-label="Open The Bedrooms photos"></button>
 </div>
-<div class="gal-item gal-room" data-room="outside">
+<div class="gal-item gal-room" data-room="bathrooms" hidden>
 <div class="gal-slides">
-<img class="gal-slide is-active" src="/assets/gallery/thumb/03-twilight-stargazing-net.jpg" alt="The cabin at dusk from below, with the stargazing net strung beneath the deck" width="640" height="480" decoding="async" />
-<img class="gal-slide" src="/assets/gallery/thumb/14-aerial-twilight.jpg" alt="The cabin from above at twilight, both decks lit" width="640" height="480" decoding="async" loading="lazy" />
-<img class="gal-slide" src="/assets/gallery/thumb/21-aerial-valley.jpg" alt="Aerial view over the valley toward the mountains" width="640" height="480" decoding="async" loading="lazy" />
-</div>
-<button class="gal-nav gal-nav-prev" type="button" aria-label="Previous photo of Outside &amp; Aerials">&#8249;</button>
-<button class="gal-nav gal-nav-next" type="button" aria-label="Next photo of Outside &amp; Aerials">&#8250;</button>
-<span class="gal-label"><b>Outside &amp; Aerials</b><small>3 photos</small></span>
-<span class="gal-count-badge">1/3</span>
-<button class="gal-open" type="button" aria-label="Open Outside &amp; Aerials photos"></button>
-</div>
-<div class="gal-item gal-room" data-room="bathrooms">
-<div class="gal-slides">
-<img class="gal-slide is-active" src="/assets/gallery/thumb/17-bathroom-main.jpg" alt="The main bathroom, with a glass shower and double vanity" width="640" height="480" decoding="async" />
+<img class="gal-slide is-active" src="/assets/gallery/thumb/17-bathroom-main.jpg" alt="The main bathroom, with a glass shower and double vanity" width="640" height="480" decoding="async" loading="lazy" />
 <img class="gal-slide" src="/assets/gallery/thumb/39-bathroom-second.jpg" alt="The second bathroom, with vanity and shower" width="640" height="480" decoding="async" loading="lazy" />
 </div>
 <button class="gal-nav gal-nav-prev" type="button" aria-label="Previous photo of The Bathrooms">&#8249;</button>
@@ -370,15 +366,9 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 <span class="gal-count-badge">1/2</span>
 <button class="gal-open" type="button" aria-label="Open The Bathrooms photos"></button>
 </div>
-<div class="gal-item gal-room" data-room="mudroom">
-<div class="gal-slides">
-<img class="gal-slide is-active" src="/assets/gallery/thumb/42-mudroom.jpg" alt="Mudroom shelving and hanging space" width="640" height="480" decoding="async" />
-</div>
-
-<span class="gal-label"><b>The Mudroom</b></span>
-
-<button class="gal-open" type="button" aria-label="Open The Mudroom photos"></button>
-</div>
+    </div>
+    <div class="gal-more">
+      <button class="btn btn-ghost" type="button" id="gal-toggle" aria-expanded="false" aria-controls="gal-grid">Show more</button>
     </div>
   </div>
 </section>
@@ -462,6 +452,6 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
   </figure>
   <button class="lbox-btn lbox-next" type="button" id="lbox-next" aria-label="Next photo">&#8250;</button>
 </div>
-<script src="/assets/site.js?v=202609031216" defer></script>
+<script src="/assets/site.js?v=202609040439" defer></script>
 </body>
 </html>
