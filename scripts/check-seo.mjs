@@ -525,11 +525,13 @@ const plannedAmenities = [
 const truthfulQualifier = /\b(?:after installation|ahead of opening|before (?:booking|dates|opening|reservations)|coming soon|future|in progress|not (?:a promise|available|bookable|open|yet)|opening list|plan(?:ned)?|renovation|still being (?:prepared|renovated)|underway|when (?:completed|confirmed|finished)|will (?:be|feature|have|include|offer))\b/i;
 const currentClaimCue = /\b(?:access|all to yourselves|all yours|available|back in|book|enjoy|features?|has|includes?|installed|offers?|open|provides?|ready|relax|return to|soak|swimsuit for|use of|waiting|with)\b/i;
 
-// The owner has confirmed a current maximum of eight, but public occupancy
-// claims remain locked until the applicable county/permit limit is revalidated.
-// Precise location details also remain locked.
+// The county/permit limit was revalidated with the owner on September 9, 2026 at
+// six overnight guests, which supersedes the earlier figure of eight and releases
+// the site-wide occupancy lock. Recheck against the short-term-rental licence when
+// it is issued and lower the published figure immediately if the licence says less.
+// Precise location details remain locked: no ZIP code and no coordinates.
 const launchFacts = Object.freeze({
-  approvedOccupancyVerified: false,
+  approvedOccupancyVerified: true,
   preciseCoordinatesVerified: false,
 });
 const capacityNumber = String.raw`(?:\d{1,2}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)`;
