@@ -259,6 +259,8 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 /* Daily rotation: each restaurant list starts with a different place every day
    (Mountain time), and one restaurant takes the spotlight card. Without
    JavaScript the page keeps its written order and the card stays hidden.
+   To preview a restaurant's card on any day, add ?spotlight= and the start
+   of its name to the address, for example ?spotlight=craft-mountain.
    A restaurant whose list item has data-photos="<key>" also gets a photo
    slideshow in the card. Each photo is [file in /assets/food/, width, height,
    caption, alt text, focus]. The frame is 4:3, and focus ("x% y%") picks which
@@ -323,6 +325,14 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
   var box = document.getElementById("spotlight"), body = document.getElementById("spotlight-body");
   if (box && body && all.length) {
     var pick = all[day % all.length];
+    var want = /[?&]spotlight=([^&#]+)/.exec(location.search);
+    if (want) {
+      want = decodeURIComponent(want[1]).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      for (var k = 0; k < all.length; k++) {
+        var nm = all[k].querySelector("strong");
+        if (nm && nm.textContent.toLowerCase().replace(/[^a-z0-9]+/g, "-").indexOf(want) === 0) { pick = all[k]; break; }
+      }
+    }
     body.innerHTML = pick.innerHTML;
     box.hidden = false;
     try { slideshow(pick.getAttribute("data-photos")); } catch (e) {}
