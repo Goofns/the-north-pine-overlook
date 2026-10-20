@@ -29,6 +29,36 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/site.css?v=202609040439" />
 <link rel="stylesheet" href="/assets/seasonal-theme.css" />
+<style>
+/* where-to-eat.html only: photo slideshow inside the Today's spotlight card */
+.spotlight.has-photos:not([hidden]){display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:var(--s-4);align-items:center}
+.spotlight.has-photos > b{grid-column:1/-1}
+.spot-show{position:relative;border-radius:var(--radius-sm);overflow:hidden;background:var(--spruce);aspect-ratio:4/3;touch-action:pan-y}
+.spot-show[hidden]{display:none}
+.spot-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s var(--ease)}
+.spot-slide.is-active{opacity:1}
+.spot-label{position:absolute;left:0;right:0;bottom:0;z-index:2;pointer-events:none;padding:44px var(--s-2) 10px;background:linear-gradient(to top,rgba(10,20,24,.82),rgba(10,20,24,0));display:flex;flex-direction:column;gap:1px}
+.spot-dish{font-family:var(--display);font-weight:500;font-size:1.02rem;line-height:1.3;color:var(--birch)}
+.spot-credit{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sage)}
+.spot-count{position:absolute;top:10px;right:10px;z-index:2;pointer-events:none;background:rgba(10,20,24,.66);color:var(--cream);border-radius:20px;padding:3px 9px;font-size:.72rem;letter-spacing:.04em}
+.spot-btn{position:absolute;z-index:3;width:34px;height:34px;padding:0;border-radius:50%;cursor:pointer;background:rgba(10,20,24,.55);border:1px solid rgba(213,198,183,.28);color:var(--birch);font-size:1.05rem;line-height:1;display:grid;place-items:center;transition:opacity .2s var(--ease),background .2s var(--ease)}
+.spot-btn:hover{background:var(--pine-card)}
+.spot-btn:focus-visible{outline:2px solid var(--lantern);outline-offset:2px}
+.spot-btn[hidden]{display:none}
+.spot-prev,.spot-next{top:50%;transform:translateY(-50%);opacity:0}
+.spot-prev{left:8px}
+.spot-next{right:8px}
+.spot-show:hover .spot-prev,.spot-show:hover .spot-next,.spot-show:focus-within .spot-prev,.spot-show:focus-within .spot-next{opacity:1}
+@media (hover:none){.spot-prev,.spot-next{opacity:1}}
+.spot-pause{top:8px;left:8px;width:30px;height:30px}
+.spot-pause svg{width:11px;height:11px;fill:currentColor}
+.spot-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media (max-width:700px){
+  .spotlight.has-photos:not([hidden]){display:block}
+  .spotlight.has-photos .spot-show{margin-bottom:var(--s-3)}
+}
+@media (prefers-reduced-motion:reduce){.spot-slide,.spot-btn{transition:none}}
+</style>
 <script>/* progressive enhancement flag: only hide .reveal content if JS is alive */
 if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.className+=" js";}</script>
 
@@ -121,7 +151,17 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 <article class="article"><div class="col">
 
 <p class="lead">Bailey is a small town, and most of its food sits on Main Street or right along US-285 within a few minutes of each other. That makes it easy to plan, with one catch: many places close one or two days midweek, and some keep different hours in winter. Check each place's own site or page for current hours before you drive down the hill. This list is a planning guide, not a paid placement or an endorsement, and the order changes every day so each place takes a turn at the top.</p>
-<div class="tip spotlight" id="spotlight" hidden><b>Today's spotlight</b><p id="spotlight-body"></p></div>
+<div class="tip spotlight" id="spotlight" hidden><b>Today's spotlight</b>
+<div class="spot-show" id="spot-show" role="region" aria-roledescription="carousel" hidden>
+<div id="spot-slides"></div>
+<span class="spot-label" aria-hidden="true"><span class="spot-dish" id="spot-dish"></span><span class="spot-credit" id="spot-credit"></span></span>
+<span class="spot-count" id="spot-count" aria-hidden="true"></span>
+<button class="spot-btn spot-pause" id="spot-pause" type="button" aria-label="Pause slideshow"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1h3v10H2zM7 1h3v10H7z"/></svg></button>
+<button class="spot-btn spot-prev" id="spot-prev" type="button" aria-label="Previous photo">&#8249;</button>
+<button class="spot-btn spot-next" id="spot-next" type="button" aria-label="Next photo">&#8250;</button>
+<span class="spot-vh" id="spot-status" aria-live="polite"></span>
+</div>
+<p id="spotlight-body"></p></div>
 
 <h2>Coffee and breakfast</h2>
 <ul data-rotate>
@@ -133,7 +173,7 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 <h2>Lunch and dinner in Bailey</h2>
 <ul data-rotate>
 <li><a class="inline" href="https://www.2dadseaterytaproom.com/" rel="noopener" target="_blank"><strong>2 Dads Eatery and Taproom</strong></a> sits on US-285 at the North Fork of the South Platte. Pub-style food, ten beers on tap, and a full bar. Its website lists Thursday through Monday.</li>
-<li><a class="inline" href="http://craftmountain.beer/" rel="noopener" target="_blank"><strong>Craft Mountain Brewing</strong></a> at 23 Main Street is a brewery and full bar with a kitchen. Its website lists Wednesday through Sunday.</li>
+<li data-photos="craft-mountain"><a class="inline" href="http://craftmountain.beer/" rel="noopener" target="_blank"><strong>Craft Mountain Brewing</strong></a> at 23 Main Street is a brewery and full bar with a kitchen. Its website lists Wednesday through Sunday.</li>
 <li><a class="inline" href="https://casasanchezrestaurants.com/bailey.html" rel="noopener" target="_blank"><strong>Casa Sanchez</strong></a> serves Mexican food with house-made tortillas, fajitas, and tacos, on US-285 in Platte Canyon. Its website lists it as open daily, which makes it the safe bet on a Tuesday or Wednesday night.</li>
 <li><a class="inline" href="https://www.aspenpeakcellars.com/" rel="noopener" target="_blank"><strong>Aspen Peak Cellars</strong></a> at 60750 US-285 is a winery with a lunch and dinner bistro: a dining room, a covered deck, and seasonal patio seating along the North Fork. It has live music on Saturday and Sunday afternoons, two to five. Its website lists Thursday through Sunday and encourages reservations, and the riverside cabanas are booked through the site.</li>
 <li><strong>South Park Coney Island Boardwalk</strong> is the hot-dog-shaped diner on US-285 just outside Bailey, a roadside landmark that works for a quick lunch.</li>
@@ -143,7 +183,7 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 
 <h2>Worth the drive</h2>
 <ul data-rotate>
-<li><strong>Bucksnort Saloon</strong> at 15921 South Elk Creek Road in Sphinx Park, near Pine, is a historic mountain saloon that reopened under new ownership after sitting closed since 2022. It is open Thursday through Sunday, with live music on Saturdays; the bar posts updates on its Facebook page.</li>
+<li data-photos="bucksnort"><strong>Bucksnort Saloon</strong> at 15921 South Elk Creek Road in Sphinx Park, near Pine, is a historic mountain saloon that reopened under new ownership after sitting closed since 2022. It is open Thursday through Sunday, with live music on Saturdays; the bar posts updates on its Facebook page.</li>
 <li><a class="inline" href="http://the-shaggy-sheep.com/" rel="noopener" target="_blank"><strong>The Shaggy Sheep</strong></a> at 50455 US-285 in Grant is a breakfast and lunch cookhouse up the highway toward Kenosha Pass. It posts separate summer and winter schedules, so check before a weekday drive. Grant is also the turn for Guanella Pass.</li>
 <li><strong>Crossroads Pub &amp; Grill</strong> at 16 Mt Evans Boulevard, just off US-285 at Pine Junction, is a pub and grill on the drive back toward Denver.</li>
 <li><strong>Golden Pine Chinese</strong> at 67348 US-285 in Pine serves Chinese food a few minutes past Pine Junction.</li>
@@ -218,8 +258,54 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
 <script>
 /* Daily rotation: each restaurant list starts with a different place every day
    (Mountain time), and one restaurant takes the spotlight card. Without
-   JavaScript the page keeps its written order and the card stays hidden. */
+   JavaScript the page keeps its written order and the card stays hidden.
+   A restaurant whose list item has data-photos="<key>" also gets a photo
+   slideshow in the card. Each photo is [file in /assets/food/, width, height,
+   caption, alt text, focus]. The frame is 4:3, and focus ("x% y%") picks which
+   part of a taller or wider photo stays in view. */
 (function(){
+  var PHOTOS = {
+    "craft-mountain": {credit: "Craft Mountain Brewing", photos: [
+      ["craft-mountain_wings-glazed-closeup_1506405687410577.jpg", 926, 617, "Glazed wings", "Close-up of glazed chicken wings on brown paper", "50% 50%"],
+      ["craft-mountain_flatbread-and-beer_1540013857383093.jpg", 1080, 1080, "Flatbread and a pint", "Flatbread topped with tomato and cilantro on checkered paper, with a pint of beer", "50% 55%"],
+      ["craft-mountain_beer-474191886_3949582262036134_6672309209565850949_n.jpg", 820, 937, "Nachos", "Nachos with cheese sauce, tomatoes and a side of guacamole in a checkered basket", "50% 50%"],
+      ["craft-mountain_beer-flight-on-board_1624641842253627.jpg", 2000, 1333, "Beer flight", "A five-beer flight on a live-edge wooden board", "50% 50%"],
+      ["craft-mountain_beer-481997767_3987258484935178_6414132815974262511_n.jpg", 896, 675, "Chili with cornbread", "A bowl of chili topped with cheese, sour cream and green onion, with a square of cornbread", "50% 50%"],
+      ["craft-mountain_pretzel-cheese-dip_1541569043894241.jpg", 926, 617, "Pretzel sticks and beer cheese", "A pretzel stick being dipped in a cup of beer cheese", "50% 50%"],
+      ["craft-mountain_cocktails-overhead_1653225216061956.jpg", 2000, 1333, "Cocktails", "Three cocktails over ice, seen from above", "50% 50%"],
+      ["craft-mountain_cinnamon-rolls-fresh_1218011542916661.jpg", 1600, 1200, "Cinnamon rolls", "A tray of fresh-baked cinnamon rolls", "50% 50%"],
+      ["craft-mountain_wings-with-sauces_1648898829827928.jpg", 926, 617, "Wings with dipping sauces", "Wings on brown paper with a red sauce and ranch, beside Craft Mountain coasters", "50% 50%"],
+      ["craft-mountain_beer-pour-from-tap_1633953107989167.jpg", 2000, 1333, "Pouring a pint", "A pint being poured from the tap", "50% 50%"],
+      ["craft-mountain_pulled-meat-bowl-overhead_1529798015071344.jpg", 926, 617, "Pulled meat bowl", "Overhead view of a bowl of pulled meat topped with fried peppers", "62% 50%"],
+      ["craft-mountain_cheers-overhead-splash_1695773315140479.jpg", 2000, 1333, "Cheers", "Five glasses of beer clinking together, seen from above", "50% 50%"],
+      ["craft-mountain_pretzel-sticks-basket_1554843092566836.jpg", 926, 617, "Pretzel sticks", "A basket of soft pretzel sticks", "50% 50%"],
+      ["craft-mountain_pastry-bites-iced_1642966533754491.jpg", 926, 617, "Iced pastry bites", "Iced pastry bites on paper beside Craft Mountain coasters", "55% 50%"],
+      ["craft-mountain_cocktails-on-barrel_1625209685530176.jpg", 2000, 1333, "Cocktails on a barrel", "Cocktails and a copper mug on top of a barrel", "50% 50%"],
+      ["craft-mountain_wings-white-sauce_1502364414481371.jpg", 926, 617, "Wings in white sauce", "Chicken wings coated in a white sauce", "50% 50%"],
+      ["craft-mountain_cinnamon-roll-and-beer_1212911296760019.jpg", 1153, 2048, "Iced cinnamon roll", "An iced cinnamon roll on a plate, with a glass of red beer behind it", "50% 78%"],
+      ["craft-mountain_beer-flight-on-barrel_1658054938912317.jpg", 926, 1389, "Beer flight", "A five-beer flight on a barrel head", "50% 42%"],
+      ["craft-mountain_taps-and-pour_1663584788359332.jpg", 2000, 1333, "The tap wall", "A beer being poured at the tap wall", "50% 50%"],
+      ["craft-mountain_cheers-at-the-bar_1691335725584238.jpg", 2000, 1333, "Cheers at the bar", "Glasses of beer clinking together at the bar", "50% 50%"],
+      ["craft-mountain_cocktails-daylight_1441420347242445.jpg", 926, 617, "Cocktail and a mule", "An orange cocktail and a hammered copper mug in daylight", "50% 50%"],
+      ["craft-mountain_pour-into-mug_1540013864049759.jpg", 1080, 1080, "Pouring into a mug", "Beer being poured from the tap into a glass mug", "50% 50%"],
+      ["craft-mountain_cheers-overhead-four_1675982187119592.jpg", 2000, 1333, "Cheers", "Four glasses of beer clinking together, seen from above", "50% 50%"],
+      ["craft-mountain_cocktails-overhead-barrel_1443155387068941.jpg", 926, 617, "Cocktails", "A red and a yellow cocktail on a barrel, seen from above", "50% 50%"]
+    ]},
+    "bucksnort": {credit: "Bucksnort Saloon", photos: [
+      ["bucksnort_bacon-burger-fall-color_1717281353736499.jpg", 1080, 1351, "Bacon burger", "A bacon burger and a side in a checkered basket on the deck rail, with fall color behind", "50% 80%"],
+      ["bucksnort_nachos-on-the-deck_1491724546292182.jpg", 1512, 1890, "Nachos on the deck", "A plate of nachos with tomatoes, olives and sour cream on the deck rail above the creek", "50% 80%"],
+      ["bucksnort_brats-tray-over-creek_1716426247155343.jpg", 1080, 1351, "Brats", "A tray of cheese-topped brats in buns, with the creek behind", "50% 90%"],
+      ["bucksnort_quesadilla-and-iced-tea_1560444612753508.jpg", 1080, 1351, "Quesadilla", "A grilled quesadilla with salsa, guacamole and sour cream, an iced tea behind it", "50% 88%"],
+      ["bucksnort_burger-and-chips-creekside_1621637636634205.jpg", 1080, 1351, "Burger and chips", "A burger and chips in a checkered basket on the deck rail by the creek", "50% 85%"],
+      ["bucksnort_stuffed-mushrooms_1679521207512514.jpg", 1080, 1351, "Stuffed mushrooms", "A plate of stuffed mushrooms topped with olive slices on the deck rail", "50% 90%"],
+      ["bucksnort_greek-salad-bowl_1621637626634206.jpg", 1080, 1351, "Greek salad", "A Greek salad in a blue bowl on the deck rail, with trees and the creek behind", "50% 95%"],
+      ["bucksnort_club-sandwich_1547026020762034.jpg", 1080, 1351, "Club sandwich", "A toasted club sandwich in a basket on the deck rail", "50% 85%"],
+      ["bucksnort_pulled-pork-sandwich_1522262509905052.jpg", 960, 1201, "Pulled pork sandwich", "A pulled pork sandwich with coleslaw and pickles in a red basket", "50% 95%"],
+      ["bucksnort_fried-bites-with-dips_1545260387605264.jpg", 960, 1201, "Fried bites with dips", "Fried bites with two dipping sauces in a checkered basket", "50% 90%"],
+      ["bucksnort_burger-branded-bun_1664983125632989.jpg", 1536, 2048, "Burger on a branded bun", "A burger with the Bucksnort logo toasted into the bun, with a side", "50% 75%"]
+    ]}
+  };
+
   var day;
   try {
     var parts = new Intl.DateTimeFormat("en-US", {timeZone: "America/Denver", year: "numeric", month: "numeric", day: "numeric"}).formatToParts(new Date());
@@ -236,8 +322,122 @@ if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-moti
   }
   var box = document.getElementById("spotlight"), body = document.getElementById("spotlight-body");
   if (box && body && all.length) {
-    body.innerHTML = all[day % all.length].innerHTML;
+    var pick = all[day % all.length];
+    body.innerHTML = pick.innerHTML;
     box.hidden = false;
+    try { slideshow(pick.getAttribute("data-photos")); } catch (e) {}
+  }
+
+  function slideshow(key) {
+    var set = key && PHOTOS[key];
+    var show = document.getElementById("spot-show");
+    if (!set || !show || !set.photos.length) return;
+    var holder = document.getElementById("spot-slides"),
+        dish = document.getElementById("spot-dish"),
+        count = document.getElementById("spot-count"),
+        status = document.getElementById("spot-status"),
+        pauseBtn = document.getElementById("spot-pause"),
+        prevBtn = document.getElementById("spot-prev"),
+        nextBtn = document.getElementById("spot-next"),
+        reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        base = "/assets/food/",
+        photos = set.photos.slice(), n = photos.length, at = 0, timer = null,
+        paused = false, inView = true, hovered = false, focused = false, touchX = null, touchY = 0;
+
+    show.setAttribute("aria-label", "Photos from " + set.credit);
+    document.getElementById("spot-credit").textContent = "Photo: " + set.credit;
+
+    var imgs = photos.map(function(p){
+      var im = document.createElement("img");
+      im.className = "spot-slide";
+      im.alt = p[4];
+      im.width = p[1];
+      im.height = p[2];
+      im.decoding = "async";
+      im.style.objectPosition = p[5];
+      im.addEventListener("error", function(){ drop(im); });
+      holder.appendChild(im);
+      return im;
+    });
+
+    /* Only the photo on screen and the next one are fetched. */
+    function load(k) {
+      var im = imgs[k];
+      if (im && !im.getAttribute("src")) im.setAttribute("src", base + photos[k][0]);
+    }
+    function paint() {
+      load(at); load((at + 1) % n);
+      imgs.forEach(function(im, k){
+        im.classList.toggle("is-active", k === at);
+        if (k === at) im.removeAttribute("aria-hidden"); else im.setAttribute("aria-hidden", "true");
+      });
+      dish.textContent = photos[at][3];
+      count.textContent = (at + 1) + "/" + n;
+      var many = n > 1;
+      prevBtn.hidden = nextBtn.hidden = count.hidden = !many;
+      pauseBtn.hidden = !many || reduce;
+    }
+    function drop(im) {
+      var k = imgs.indexOf(im);
+      if (k < 0) return;
+      imgs.splice(k, 1); photos.splice(k, 1); holder.removeChild(im); n = imgs.length;
+      if (!n) { stop(); show.hidden = true; box.classList.remove("has-photos"); return; }
+      if (k < at || at >= n) at = (at - (k < at ? 1 : 0) + n) % n;
+      paint(); sync();
+    }
+    function go(d) { at = (at + d + n) % n; paint(); }
+    /* A visitor's own step restarts the timer and is read out to screen readers. */
+    function user(d) {
+      go(d); stop(); sync();
+      status.textContent = "Photo " + (at + 1) + " of " + n + ": " + photos[at][3];
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function sync() {
+      var play = !reduce && !paused && !hovered && !focused && inView && !document.hidden && n > 1;
+      if (play && !timer) timer = setInterval(function(){ go(1); }, 5000);
+      if (!play) stop();
+    }
+    function setPaused(p) {
+      paused = p;
+      if (!p) focused = false;
+      pauseBtn.setAttribute("aria-label", p ? "Play slideshow" : "Pause slideshow");
+      pauseBtn.firstChild.innerHTML = p ? '<path d="M3 1l8 5-8 5z"/>' : '<path d="M2 1h3v10H2zM7 1h3v10H7z"/>';
+      sync();
+    }
+
+    prevBtn.addEventListener("click", function(){ user(-1); });
+    nextBtn.addEventListener("click", function(){ user(1); });
+    pauseBtn.addEventListener("click", function(){ setPaused(!paused); });
+    show.addEventListener("keydown", function(e){
+      if (e.key === "ArrowLeft") { user(-1); e.preventDefault(); }
+      else if (e.key === "ArrowRight") { user(1); e.preventDefault(); }
+    });
+    /* Hovering over the photos, or tabbing into them with the keyboard, holds them still. */
+    show.addEventListener("mouseenter", function(){ hovered = true; sync(); });
+    show.addEventListener("mouseleave", function(){ hovered = false; sync(); });
+    show.addEventListener("focusin", function(e){
+      var kb = true;
+      try { kb = e.target.matches(":focus-visible"); } catch (x) {}
+      if (kb) { focused = true; sync(); }
+    });
+    show.addEventListener("focusout", function(e){ if (!show.contains(e.relatedTarget)) { focused = false; sync(); } });
+    show.addEventListener("touchstart", function(e){ touchX = e.touches[0].clientX; touchY = e.touches[0].clientY; }, {passive: true});
+    show.addEventListener("touchend", function(e){
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX, dy = e.changedTouches[0].clientY - touchY;
+      touchX = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) user(dx < 0 ? 1 : -1);
+    }, {passive: true});
+    document.addEventListener("visibilitychange", sync);
+    if ("IntersectionObserver" in window) {
+      inView = false;
+      new IntersectionObserver(function(entries){ inView = entries[0].isIntersecting; sync(); }, {threshold: 0.4}).observe(show);
+    }
+
+    box.classList.add("has-photos");
+    show.hidden = false;
+    paint();
+    sync();
   }
 })();
 </script>
