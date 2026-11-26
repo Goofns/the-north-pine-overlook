@@ -522,3 +522,21 @@ a:focus-visible,.btn:focus-visible,.pill:focus-visible,button:focus-visible,inpu
   .amen-grid{grid-template-columns:1fr}
   .foot-cols{grid-template-columns:1fr}
 }
+
+/* phone header: the brand, Check dates and the menu button share one row.
+   At full size they need about 490px, so on phones (360 to 430px wide) the menu
+   button was pushed off-screen and Check dates was cut off. */
+@media (max-width:880px){
+  .nav .pill{margin-left:auto}
+}
+@media (max-width:560px){
+  .nav,.nav.scrolled{gap:8px;padding-left:14px;padding-right:14px}
+  .nav .brand{font-size:.86rem;gap:6px}
+  .nav .brand-icon{width:24px;height:24px}
+  .nav .pill{font-size:.75rem;padding:9px 12px}
+}
+/* very small phones: icon only. The name is clipped, not removed, so screen readers still read it. */
+@media (max-width:370px){
+  .nav .brand{width:28px;overflow:hidden}
+  .nav .brand-icon{width:28px;height:28px}
+}
